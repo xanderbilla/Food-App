@@ -1,0 +1,50 @@
+.container{
+    padding: 36px 60px;
+}
+
+.top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px solid #d1421e49;
+}
+
+.title{
+    font-size: 42px;
+    font-weight: 300;
+}
+
+.select {
+    padding: 8px;
+    font-size: 18px;
+    width: 200px;
+    border-radius: 6px;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    background-color: #ffc9bb;
+    font-weight: 600;
+    height: 50px;
+}
+
+.select:hover {
+    background-color: #d1411e;
+    color: #fff;
+}
+
+.option{
+    background-color: #fff;
+   color: black;
+}
+
+.bottom{
+    margin: 14px 0;
+}
+
+.cardContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}

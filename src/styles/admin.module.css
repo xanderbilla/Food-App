@@ -1,0 +1,36 @@
+.admin {
+    height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.header {
+    font-size: 32px;
+    font-weight: 300;
+}
+
+.inputArea {
+    margin: 10px 0;
+}
+
+.input {
+    width: 300px;
+    border-radius: 6px;
+    font-size: 16px;
+    padding: 6px 10px;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.button {
+    padding: 8px 10px;
+    width: 70px;
+    background-color: black;
+    color: #fff;
+    font-weight: 600;
+}

@@ -1,0 +1,161 @@
+.container {
+  height: 80px;
+  padding: 0px 50px;
+  background-color: #d1411e;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.center,
+.texts,
+.left,
+.cart {
+  display: flex;
+  align-items: center;
+}
+
+.left {
+  flex: 3;
+}
+
+.center {
+  flex: 1;
+  justify-content: flex-start;
+}
+
+.callButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 50%;
+  padding: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+.callImg {
+  height: 32px;
+  width: 32px;
+}
+
+.texts {
+  margin-left: 10px;
+  color: white;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.text:first-child {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.text:last-child {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.list {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  color: white;
+}
+
+.listItem {
+  margin: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cart {
+  position: relative;
+}
+
+.counter {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: white;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #d1411e;
+}
+
+.button {
+  padding: 10px;
+  background-color: transparent;
+  font-weight: 600;
+  border: 1px solid white;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button:hover{
+  background-color: #fff;
+  color: #d1411e;
+}
+
+.menu {
+  display: none;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 967px) {
+
+  .list,
+  .cart {
+    display: none;
+  }
+
+  .container {
+    padding: 8px;
+    justify-content: space-between;
+  }
+
+  .left,
+  .center {
+    flex: 1;
+  }
+
+  .center {
+    justify-content: flex-end;
+  }
+
+  .menu {
+    display: block;
+  }
+
+  .callImg {
+    height: 24px;
+    width: 24px;
+  }
+
+  .callButton {
+    height: 36px;
+    width: 36px;
+  }
+}
+
+/* Media Query for low resolution  Tablets, Ipads */
+@media (min-width: 481px) and (max-width: 767px) {}
+
+/* Media Query for Tablets Ipads portrait mode */
+@media (min-width: 768px) and (max-width: 1024px) {}
+
+/* Media Query for Laptops and Desktops */
+@media (min-width: 1025px) and (max-width: 1280px) {}

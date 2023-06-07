@@ -1,0 +1,122 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+}
+
+.column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+}
+
+.inputArea {
+    margin-bottom: 10px;
+}
+
+.input,
+.inputRadio {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.dropdownButton {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff;
+    cursor: pointer;
+    text-align: left;
+}
+
+.dropdownList {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    padding: 0;
+    list-style: none;
+    z-index: 1;
+}
+
+.dropdownList li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.dropdownList li:hover {
+    background-color: #f2f2f2;
+}
+
+.action {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.button {
+    padding: 10px 20px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.button:first-child{
+    background-color: #d1411e;
+}
+
+.button:last-child{
+    border:1px solid #d1411e;
+    color: #d1411e;
+}
+
+.extras {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.inputRadio {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 10px;
+}
+
+.radioBtn{
+    display: flex;
+    gap: 5px;
+}

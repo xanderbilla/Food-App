@@ -1,0 +1,76 @@
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+
+  .table .th,
+  .table .td {
+    padding: 8px;
+  }
+
+  .table .th {
+    background-color: #d1411e;
+    color: #fff;
+  }
+
+  .table tbody tr:nth-child(even) {
+    background-color: #b9b9b9;
+  }
+
+  .productCard {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .productImage {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+
+  .productDetails {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  .productName {
+    font-weight: 400;
+  }
+
+  .productName:hover {
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .button {
+    padding: 4px 14px;
+    background-color: #7d7d7d;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+  }
+
+  .selectedProduct {
+    font-weight: 700;
+  }
+
+  .td:nth-child(1),
+  .td:nth-child(2) {
+    width: 250px;
+  }
+
+  .td:nth-child(5) {
+    width: 350px;
+  }
+
+  .td:nth-child(6),
+  .td:nth-child(7) {
+    width: 150px;
+  }
+
+  .td:nth-child(8) {
+    width: 150px;
+  }
