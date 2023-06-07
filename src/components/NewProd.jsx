@@ -8,12 +8,10 @@ const NewProd = ({ isClick, setIsClick }) => {
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
   const [isNew, setIsNew] = useState('no');
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleExtrasInput = (e) => {
     if (e.key === 'Enter' && e.target.value.trim() !== '') {
       setExtras((prevExtras) => [...prevExtras, e.target.value.trim()]);
-      setIsDropdownOpen(false);
       setExtrasInput('');
     }
   };
@@ -21,15 +19,6 @@ const NewProd = ({ isClick, setIsClick }) => {
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     setImage(file);
-  };
-
-  const selectCategory = (selectedCategory) => {
-    setCategory(selectedCategory);
-    setIsDropdownOpen(false);
-  };
-
-  const toggleDropdown = () => {
-    setIsDropdownOpen((prevState) => !prevState);
   };
 
   const handleIsNewChange = (e) => {
