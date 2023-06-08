@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import styles from '../styles/cartSummary.module.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { API } from 'aws-amplify';
 import { generatePaymentId } from '../utils/funcFoo';
 import { useNavigate } from 'react-router-dom';
+import { resetCart } from '../redux/cartRedux';
 
 const CartSummary = () => {
+  const dispatch = useDispatch()
   const cart = useSelector((state) => state.cart);
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
@@ -40,6 +42,7 @@ const CartSummary = () => {
       try {
         const response = await API.post(apiName, path, myInit);
         navigate('/order');
+        dispatch(resetCart());
       } catch (error) {
         console.log(error.response);
       }
@@ -88,6 +91,7 @@ const CartSummary = () => {
             API.post(apiName, path, myInit)
               .then((response) => {
                 console.log(myInit.body);
+                dispatch(resetCart());
                 navigate(`/order/${myInit.body.orderId}`);
               })
               .catch((error) => {
@@ -162,9 +166,8 @@ const CartSummary = () => {
           </div>
           <div className={styles.paymentOptions}>
             <label
-              className={`${styles.label} ${
-                paymentMethod === 'cash' ? styles.selected : ''
-              }`}
+              className={`${styles.label} ${paymentMethod === 'cash' ? styles.selected : ''
+                }`}
             >
               <input
                 type="radio"
@@ -177,9 +180,8 @@ const CartSummary = () => {
               Cash on Delivery
             </label>
             <label
-              className={`${styles.label} ${
-                paymentMethod === 'card' ? styles.selected : ''
-              }`}
+              className={`${styles.label} ${paymentMethod === 'card' ? styles.selected : ''
+                }`}
             >
               <input
                 type="radio"
