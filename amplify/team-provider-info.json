@@ -1,0 +1,47 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-foodapp-dev-122050-authRole",
+      "UnauthRoleArn": "arn:aws:iam::954138568328:role/amplify-foodapp-dev-122050-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::954138568328:role/amplify-foodapp-dev-122050-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-foodapp-dev-122050-deployment",
+      "UnauthRoleName": "amplify-foodapp-dev-122050-unauthRole",
+      "StackName": "amplify-foodapp-dev-122050",
+      "StackId": "arn:aws:cloudformation:ap-south-1:954138568328:stack/amplify-foodapp-dev-122050/eb380820-05c8-11ee-b031-069cbdf62a6a",
+      "AmplifyAppId": "d2gs7skzawlj6s",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-foodapp-dev-122050-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    },
+    "categories": {
+      "auth": {
+        "foodapp1df6c44a": {}
+      },
+      "function": {
+        "foodAppClientProdFunc": {
+          "deploymentBucketName": "amplify-foodapp-dev-122050-deployment",
+          "s3Key": "amplify-builds/foodAppClientProdFunc-59323233416d37784d79-build.zip"
+        },
+        "foodAppAdminProdFunc": {
+          "deploymentBucketName": "amplify-foodapp-dev-122050-deployment",
+          "s3Key": "amplify-builds/foodAppAdminProdFunc-3848663562346e566649-build.zip"
+        },
+        "foodAppAdminOrdersFunc": {
+          "deploymentBucketName": "amplify-foodapp-dev-122050-deployment",
+          "s3Key": "amplify-builds/foodAppAdminOrdersFunc-794d476f6762736c7232-build.zip"
+        },
+        "foodAppClientOrdersFunc": {
+          "deploymentBucketName": "amplify-foodapp-dev-122050-deployment",
+          "s3Key": "amplify-builds/foodAppClientOrdersFunc-3350476b716158663873-build.zip"
+        }
+      },
+      "storage": {
+        "foodAppStorage": {},
+        "FoodAppProdDB": {},
+        "FoodAppOrdersDB": {}
+      },
+      "api": {
+        "foodAppApi": {}
+      }
+    }
+  }
+}

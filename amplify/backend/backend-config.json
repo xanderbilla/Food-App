@@ -1,0 +1,215 @@
+{
+  "api": {
+    "foodAppApi": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "foodAppClientProdFunc"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "foodAppAdminProdFunc"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "foodAppClientOrdersFunc"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "foodAppAdminOrdersFunc"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "auth": {
+    "foodapp1df6c44a": {
+      "customAuth": false,
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
+    }
+  },
+  "function": {
+    "foodAppAdminOrdersFunc": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "FoodAppOrdersDB"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "foodAppAdminProdFunc": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "FoodAppProdDB"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "foodAppClientOrdersFunc": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "FoodAppOrdersDB"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "foodAppClientProdFunc": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "FoodAppProdDB"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_foodAppAdminOrdersFunc_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "foodAppAdminOrdersFunc"
+        }
+      ]
+    },
+    "AMPLIFY_function_foodAppAdminOrdersFunc_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "foodAppAdminOrdersFunc"
+        }
+      ]
+    },
+    "AMPLIFY_function_foodAppAdminProdFunc_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "foodAppAdminProdFunc"
+        }
+      ]
+    },
+    "AMPLIFY_function_foodAppAdminProdFunc_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "foodAppAdminProdFunc"
+        }
+      ]
+    },
+    "AMPLIFY_function_foodAppClientOrdersFunc_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "foodAppClientOrdersFunc"
+        }
+      ]
+    },
+    "AMPLIFY_function_foodAppClientOrdersFunc_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "foodAppClientOrdersFunc"
+        }
+      ]
+    },
+    "AMPLIFY_function_foodAppClientProdFunc_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "foodAppClientProdFunc"
+        }
+      ]
+    },
+    "AMPLIFY_function_foodAppClientProdFunc_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "foodAppClientProdFunc"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "FoodAppOrdersDB": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "FoodAppProdDB": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "foodAppStorage": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
+    }
+  }
+}

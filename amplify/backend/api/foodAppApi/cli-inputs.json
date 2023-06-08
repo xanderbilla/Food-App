@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "paths": {
+    "/client/products": {
+      "name": "/client/products",
+      "lambdaFunction": "foodAppClientProdFunc",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/admin/products": {
+      "name": "/admin/products",
+      "lambdaFunction": "foodAppAdminProdFunc",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ]
+      }
+    },
+    "/client/orders": {
+      "name": "/client/orders",
+      "lambdaFunction": "foodAppClientOrdersFunc",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/admin/orders": {
+      "name": "/admin/orders",
+      "lambdaFunction": "foodAppAdminOrdersFunc",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ]
+      }
+    }
+  }
+}
