@@ -5,7 +5,6 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Product from './pages/Product';
 import Home from './pages/Home';
-import Cart from './pages/Cart';
 import Track from './pages/Track';
 import Admin from './pages/Admin';
 import Dashboard from './pages/Dashboard';
@@ -14,6 +13,7 @@ import Category from './pages/Category';
 import { API, Auth } from 'aws-amplify';
 import { useEffect, useState } from 'react';
 import Contact from './pages/Contact';
+import Cart from './pages/Cart';
 
 function App() {
   const [data, setData] = useState([]);
