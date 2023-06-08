@@ -1,70 +1,120 @@
-# Getting Started with Create React App
+<div style="display:flex;">
+  <img src="https://i.imgur.com/6bvTjCh.png" alt="" height="100px" width="100px"> 
+  <img src="https://www.pngall.com/wp-content/uploads/5/Vertical-Line-PNG-Images.png" alt="" height="100px">
+<img src="https://i.imgur.com/G6sWWqH.png" alt="" height="100px" >
+  </div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# E Commerce Web Application
 
-## Available Scripts
+The multi-e-commerce application is a comprehensive solution that encompasses four distinct apps: fashion web, food order, electronic e-commerce, and grocery apps. Each app operates independently, yet they are seamlessly integrated to provide users with a unified shopping experience.
 
-In the project directory, you can run:
+The fashion web app serves as an online store for clothing and fashion accessories. It features product listings, detailed product information, and a shopping cart. Users can search, browse, and add items to their cart, and complete purchases using various payment methods.
+## Acknowledgements
 
-### `npm start`
+I would like to express our sincere gratitude for your trust and support in our e-commerce application. Your satisfaction and loyalty are the driving forces behind our continuous efforts to provide you with a seamless and enjoyable shopping experience. We appreciate your business and look forward to serving you with the highest level of service and quality products. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Thank you for choosing our e-commerce platform for your online shopping needs.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Authors
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [Vikas Singh](https://www.github.com/octokatherine)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Demo
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[Click Here For Live Demo](https://fashion.xanderbilla.com)
+## Documentation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [Daily Log Book](https://linktodocumentation)
+- [Weekly Log Report](https://linktodocumentation)
 
-### `npm run eject`
+## CIE/SEE Report
+|Continuous Internal Evaluation (CIE -  I   )                                                                          |
+|--------------------------------------------------------------------------------|
+|[Capstone Project Document](https://linktodocumentation)                                                       |
+|[Cost Breakdown Structure](https://linktodocumentation)                                                             |
+|[Implmentation Methodology](https://linktodocumentation)                                                                    |
+|[Project Timeline](https://linktodocumentation)                                                    |
+|[Project Timeline](https://linktodocumentation)                                                                |
+|[Work Breakdown Structure](https://linktodocumentation)           |
+[Risk Analysis Report](https://linktodocumentation)                                                             |
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+|Continuous Internal Evaluation (CIE - II )                                    |
+|--------------------------------------------------------------------------------|
+|[Capstone Project Document](https://linktodocumentation)                                                       |
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+|Continuous Internal Evaluation (CIE - III)                                     |
+|--------------------------------------------------------------------------------|
+|[Testing and validation](https://linktodocumentation)                                                       |
+|[Result and Inference](https://linktodocumentation)                                                       |
 
-## Learn More
+|Semester End Examination (SEE - I)                                     |
+|--------------------------------------------------------------------------------|
+|[Powerpoint Presentation / Demonstration](https://linktodocumentation)                                                       |
+|[Project Report](https://linktodocumentation)                                                       |
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Workflow
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![App Screenshot](https://i.imgur.com/8EE3Lo8.png)
 
-### Code Splitting
+## Run Locally
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Clone the project
 
-### Analyzing the Bundle Size
+```bash
+  git clone --branch prod https://github.com/xanderbilla/acharya.git
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Go to the project directory
 
-### Making a Progressive Web App
+```bash
+  cd acharya
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Install dependencies
 
-### Advanced Configuration
+```bash
+  npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Start the server
 
-### Deployment
+```bash
+  npm run start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+## Used By
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is used by the following organization/people:
+
+- Acharya Institutes
+- [Vikas Singh](https://github.com/xanderbilla)
+- Muddappa C N (Project Cohort)
+- Chethan H S (Head Of Department CSE)
+
+
+## Lessons Learned
+
+This project brings me a lot of oppertunity to learn new technology and frameworks such as React Js, Node Js and MongoDB/DynamoDB. I also learned more advance usage of [AWS](https://aws.amazon.com) Amplify Service that is implmenting backend.
+
+I faced a lot of challenges such as wrtiting API and tetsing API. I overcome all the problems with the help of [docs](https://docs.aws.amazon.com) and [community Support](https://github.com/aws-amplify) of AWS.
+
+
+## Support
+
+For support, [email](mailto:xanderbilla@gmail.com) or message on [Instagram](https://instagram.com/xanderbilla).
+
+
+## Appendix
+
+This project is prohibited to use for commercial purpose.
+
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
