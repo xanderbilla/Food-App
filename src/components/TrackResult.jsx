@@ -3,35 +3,18 @@ import { Link } from "react-router-dom";
 import styles from "../styles/trackResult.module.css";
 import FormattedDate from "./FormattedDate";
 
-const TrackResult = () => {
-  const data = [
-    {
-      orderId: 1,
-      name: "John Doe",
-      address: "#5 45th Main, 2nd Cross, Indu Colony, JP Nagar, Bangalore - 560076",
-      amount: 100,
-      status: "Completed",
-      timestamp: "2023-06-01T10:30:00Z",
-    },
-    {
-      orderId: 2,
-      name: "Jane Smith",
-      address: "#56 4th Main, 1st Cross, Maya Nagar, Marathalli, Bangalore - 560076",
-      amount: 150,
-      status: "Pending",
-      timestamp: "2023-06-02T14:45:00Z",
-    },
-    // Add more data rows as needed
-  ];
-
-  // Sort the data by timestamp in descending order
+const TrackResult = ({ data, onCancel }) => {
   const sortedData = [...data].sort(
     (a, b) => Date.parse(b.timestamp) - Date.parse(a.timestamp)
   );
 
-  const renderCancelBtn = (status) => {
+  const handleCancel = (orderId) => {
+    onCancel(orderId); // Invoke the onCancel callback from Track.jsx
+  };
+
+  const renderCancelBtn = (status, orderId) => {
     if (status === "Pending" || status === "Preparing") {
-      return <button className={styles.cancelBtn}>Cancel</button>;
+      return <button className={styles.cancelBtn} onClick={() => handleCancel(orderId)}>Cancel</button>;
     }
     return null;
   };
@@ -43,7 +26,7 @@ const TrackResult = () => {
           <th className={styles.th}>Order ID</th>
           <th className={styles.th}>Order Date</th>
           <th className={styles.th}>Name</th>
-          <th className={styles.th}>Phone Number</th>
+          <th className={styles.th}>Address</th>
           <th className={styles.th}>Amount</th>
           <th className={styles.th}>Status</th>
           <th className={styles.th}></th>
@@ -60,11 +43,11 @@ const TrackResult = () => {
             <td className={styles.td}>
               <FormattedDate timestamp={row.timestamp} />
             </td>
-            <td className={styles.td}>{row.name}</td>
+            <td className={styles.td}>{row.custName}</td>
             <td className={styles.td}>{row.address}</td>
-            <td className={styles.td}>₹{row.amount}</td>
+            <td className={styles.td}>₹{row.product && row.product.total}</td>
             <td className={styles.td}>{row.status}</td>
-            <td className={styles.td}>{renderCancelBtn(row.status)}</td>
+            <td className={styles.td}>{renderCancelBtn(row.status, row.orderId)}</td>
           </tr>
         ))}
       </tbody>

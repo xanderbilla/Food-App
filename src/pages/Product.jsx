@@ -1,65 +1,117 @@
 import styles from "../styles/Product.module.css";
-import { IngredientOptions } from '../components/IngredientOptions'
-import { useState } from "react";
+import { IngredientOptions } from '../components/IngredientOptions';
+import { useEffect, useState } from "react";
+import { API } from "aws-amplify";
+import { useLocation } from "react-router-dom";
+import { getImage } from "../utils/getImage";
+import { addProduct } from "../redux/cartRedux";
+import { useDispatch } from "react-redux";
 
 const Product = () => {
   const [size, setSize] = useState(0);
+  const [data, setData] = useState({});
+  const loc = useLocation().pathname.split('/')[2];
+  const [imageUrls, setImageUrls] = useState('');
+  const [selectedExtras, setSelectedExtras] = useState([]); // Add selectedExtras state
+  const dispatch = useDispatch();
+
+  const apiName = 'foodAppApi';
+  const path = `/client/products/${loc}`;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await API.get(apiName, path);
+        setData(response);
+      } catch (error) {
+        console.log(error.response);
+      }
+    };
+    fetchData();
+
+  }, [path]);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const urls = await getImage(data.img);
+        setImageUrls(urls);
+      } catch (error) {
+        console.log('Error retrieving images:', error);
+      }
+    };
+
+    if (data.img) {
+      fetchImages();
+    }
+
+  }, [data.img]);
+
+  const handleCheckboxChange = (event) => {
+    const { name, checked } = event.target;
+    if (checked) {
+      setSelectedExtras((prevExtras) => [...prevExtras, name]);
+    } else {
+      setSelectedExtras((prevExtras) => prevExtras.filter((extra) => extra !== name));
+    }
+  };
 
   const handleCart = () => {
     const quantityInput = document.querySelector(`.${styles.quantity}`);
-    const quantity = quantityInput.value;
-    const price = pizza.price[size];
+    const quantity = parseInt(quantityInput.value);
+    const price = data.price && data.price[size];
+    const productData = {
+      id: data.prodId,
+      img: data.img,
+      title: data.title,
+      size: size,
+      price: price,
+      quantity: quantity,
+      extras: selectedExtras
+    };
 
-    console.log("Price:", price);
-    console.log("Size:", getSizeLabel(size));
-    console.log("Quantity:", quantity);
-  }
+    dispatch(addProduct(productData));
+  };
 
   const getSizeLabel = (size) => {
-    if (size === 1) {
+    if (size === 0) {
+      return 'Small';
+    } else if (size === 1) {
       return 'Medium';
     } else if (size === 2) {
       return 'Large';
     } else {
-      return 'Small';
+      return 'Unknown';
     }
-  };
-
-  const pizza = {
-    id: 1,
-    img: "/img/pizza.png",
-    name: "CAMPAGNOLA",
-    price: [19.9, 23.9, 27.9],
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis arcu purus, rhoncus fringilla vestibulum vel, dignissim vel ante. Nulla facilisi. Nullam a urna sit amet tellus pellentesque egestas in in ante.",
   };
 
   return (
     <div className={styles.container}>
       <div className={styles.left}>
         <div className={styles.imgContainer}>
-          <img src={pizza.img} alt="" className={styles.mainImg} />
+          <img src={imageUrls} alt={data.title} className={styles.mainImg} />
         </div>
       </div>
       <div className={styles.right}>
-        <h1 className={styles.title}>{pizza.name}</h1>
-        <span className={styles.price}>₹ {pizza.price[size]}</span>
-        <p className={styles.desc}>{pizza.desc}</p>
-        <h3 className={styles.choose}>Choose the size</h3>
+        <h1 className={styles.title}>{data.title}</h1>
+        {data.price && <span className={styles.price}>₹ {data.price[size]}</span>}
+        <p className={styles.desc}>{data.desc}</p>
+        {data.size && data.size.length > 0 && <h3 className={styles.choose}>Choose the size</h3>}
         <div className={styles.sizes}>
-          <div className={styles.size} onClick={() => setSize(0)}>
-            <img src="/img/size.png" alt="" className={styles.img} />
-            <span className={styles.number}>Small</span>
-          </div>
-          <div className={styles.size} onClick={() => setSize(1)}>
-            <img src="/img/size.png" alt="" className={styles.img} />
-            <span className={styles.number}>Medium</span>
-          </div>
-          <div className={styles.size} onClick={() => setSize(2)}>
-            <img src="/img/size.png" alt="" className={styles.img} />
-            <span className={styles.number}>Large</span>
-          </div>
+          {data.size &&
+            data.size.map((item, index) => (
+              <div className={styles.size} key={index} onClick={() => setSize(index)}>
+                <img src="/img/size.png" alt="" className={styles.img} />
+                <span className={styles.number}>{getSizeLabel(index)}</span>
+              </div>
+            ))
+          }
         </div>
-        <IngredientOptions />
+        <IngredientOptions
+          extras={data.extras}
+          selectedExtras={selectedExtras}
+          handleCheckboxChange={handleCheckboxChange}
+        />
         <div className={styles.add}>
           <input type="number" defaultValue={1} className={styles.quantity} />
           <button className={styles.button} onClick={handleCart}>Add to Cart</button>

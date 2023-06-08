@@ -12,7 +12,7 @@ const PizzaList = ({items}) => {
       </p>
       <div className={styles.wrapper}>
         {items.map((item,i) => 
-          <PizzaCard item={item} />
+          <PizzaCard item={item} key={i}/>
         )}
       </div>
     </div>

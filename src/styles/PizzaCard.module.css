@@ -1,18 +1,25 @@
 .container {
   width: 430px;
   height: 200px;
-  padding: 10px;
+  padding: 10px 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 40px;
   cursor: pointer;
-  gap: 30px;
   background-color: #d1421e2a;
   border-radius: 8px;
   margin: 14px;
 }
 
+.left, .right{
+  flex: 1;
+}
+
+.left{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .link {
   text-decoration: none;
@@ -36,6 +43,7 @@
 }
 
 .img {
+  object-fit: cover;
   height: 150px;
   width: 150px;
 }
