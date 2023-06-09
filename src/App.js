@@ -13,7 +13,7 @@ import Category from './pages/Category';
 import { API, Auth } from 'aws-amplify';
 import { useEffect, useState } from 'react';
 import Contact from './pages/Contact';
-import Cart from './pages/Cart';
+import Cart from './pages/cart';
 
 function App() {
   const [data, setData] = useState([]);
