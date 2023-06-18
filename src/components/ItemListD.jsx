@@ -23,7 +23,8 @@ const ItemListD = ({ data, onDelete }) => {
     onDelete(id);
   };
   return (
-    <table className={styles.table}>
+    <div className={styles.tableContainer}>
+       <table className={styles.table}>
       <thead>
         <tr>
           <th className={styles.th}>Product ID</th>
@@ -84,6 +85,7 @@ const ItemListD = ({ data, onDelete }) => {
         ))}
       </tbody>
     </table>
+   </div>
   );
 };
 

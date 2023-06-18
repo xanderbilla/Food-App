@@ -74,3 +74,10 @@
   .td:nth-child(8) {
     width: 150px;
   }
+
+  @media (max-width: 767px) {
+    .container {
+      max-height: 400px; 
+      overflow: auto;
+    }
+  }

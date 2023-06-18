@@ -1,15 +1,19 @@
+.conatiner{
+    padding: 10px 20px;
+}
 .wrapper {
     background-color: #f0f0f0;
     border-radius: 8px;
     padding: 20px 40px;
     display: flex;
-    width: 900px;
+    gap: 20px;
     justify-content: space-between;
 }
 
 .title{
     font-size: 32px;
     font-weight: 300;
+    text-align: center;
 }
 
 .paymentOptions{
@@ -91,4 +95,10 @@
 .label:hover, .selected{
     background-color: #d1421e45;
     border-radius: 8px;
+}
+
+@media (max-width: 767px) {
+    .wrapper{
+        flex-wrap: wrap;
+    }
 }

@@ -50,6 +50,9 @@
 
 
 .button {
+  align-items: center;
+  display: flex;
+  justify-content: center;
   width: 100%;
   border: none;
   width: 50px;

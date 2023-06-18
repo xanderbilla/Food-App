@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes} from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
 import './App.css';
 import Order from './pages/Order';
 import Navbar from './components/Navbar'
@@ -18,6 +18,21 @@ import Cart from './pages/cart';
 function App() {
   const [data, setData] = useState([]);
   const [user, setUser] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
+
+  useEffect(() => {
+    checkAuth();
+  }, []);
+
+  const checkAuth = async () => {
+    try {
+      const user = await Auth.currentAuthenticatedUser();
+      setIsLogin(true);
+    } catch (error) {
+      setIsLogin(false);
+      console.log(error);
+    }
+  };
 
   const apiName = 'foodAppApi';
   const path = '/client/products';
@@ -62,8 +77,17 @@ function App() {
             <Route path='/cart' element={<Cart />} />
             <Route path='/menu' element={<Menu data={data} />} />
             <Route path='/menu/:category' element={<Category data={data} />} />
-            <Route path='/admin' element={<Admin />} />
-            <Route path='/admin/dashboard' element={<Dashboard />} />
+            {isLogin ? (
+              <>
+              <Route path="/admin" element={<Dashboard />} />
+            <Route path="/admin/dashboard" element={<Dashboard />} />
+          </>
+        ) : (
+          <>
+            <Route path="/admin/dashboard" element={<Navigate to="/admin" />} />
+            <Route path="/admin" element={<Admin />} />
+          </>
+        )}
           </Routes>
           <Footer />
         </>

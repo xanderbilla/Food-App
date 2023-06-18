@@ -136,8 +136,7 @@
   background-color: #2d2c2bb7;
 }
 
-/* Media Query for Mobile Devices */
-@media (max-width: 967px) {
+@media (max-width: 767px) {
 
   .list,
   .cart {
@@ -155,7 +154,7 @@
   }
 
   .center {
-    justify-content: flex-end;
+    justify-content: center;
   }
 
   .menu {

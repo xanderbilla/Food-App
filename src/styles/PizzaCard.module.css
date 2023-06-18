@@ -1,6 +1,6 @@
 .container {
   width: 430px;
-  height: 200px;
+  height: 150px;
   padding: 10px 14px;
   display: flex;
   align-items: center;
@@ -15,7 +15,7 @@
   flex: 1;
 }
 
-.left{
+.left, .link{
   display: flex;
   align-items: center;
   justify-content: center;

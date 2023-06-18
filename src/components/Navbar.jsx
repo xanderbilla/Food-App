@@ -17,14 +17,14 @@ const Navbar = ({ user }) => {
     return (
         <div className={styles.container}>
             <div className={styles.left}>
-                <Link style={{ textDecoration: 'none', color: 'inherit' }} to='/'>
+                <Link style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center'}} to='/'>
                     <img src="/img/logo.png" alt="" width="200" height="50" />
                 </Link>
                 <ul className={styles.list}>
                     <li className={styles.listItem}><Link style={{ textDecoration: 'none', color: 'inherit' }} to='/menu'>MENU</Link></li>
                     <li className={styles.listItem}><Link style={{ textDecoration: 'none', color: 'inherit' }} to='/admin/dashboard'>DASHBOARD</Link></li>
-                    <li className={styles.listItem}><Link style={{ textDecoration: 'none', color: 'inherit' }} to='/contact'>CONTACT</Link></li>
-                    <li className={styles.listItem}>
+                    <li className={`${styles.listItem} ${user ? styles.hide : ''}`}><Link style={{ textDecoration: 'none', color: 'inherit' }} to='/contact'>CONTACT</Link></li>
+                    <li className={`${styles.listItem} ${user ? styles.hide : ''}`}>
                         <Link to='/order'>
                             <button className={styles.button}>
                                 TRACK ORDER
@@ -33,7 +33,7 @@ const Navbar = ({ user }) => {
                     </li>
                 </ul>
             </div>
-            <div className={styles.center}>
+            <div className={`${styles.center} ${user ? styles.hide : ''}`}>
                 <div className={styles.callButton}>
                     <img src="/img/telephone.png" alt="" className={styles.callImg} />
                 </div>
@@ -43,7 +43,7 @@ const Navbar = ({ user }) => {
                 </div>
             </div>
             <div className={styles.right}>
-                <div className={styles.cart}>
+                <div className={`${styles.cart} ${user ? styles.hide : ''}`}>
                     <Link style={{ textDecoration: 'none', color: 'inherit' }} to='/cart'>
                         <img src="/img/cart.png" alt="" width="30" height="30" />
                         <div className={styles.counter}>{quantity}</div>
@@ -60,7 +60,7 @@ const Navbar = ({ user }) => {
                 }
             </div>
             <div className={styles.menu}>
-                <ToggleMenu />
+                <ToggleMenu user={user} />
             </div>
         </div>
     )

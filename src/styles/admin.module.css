@@ -33,3 +33,10 @@
     color: #fff;
     font-weight: 600;
 }
+
+@media only screen and (max-width: 767px) {
+    .admin{
+        height: 50vh;
+    }
+  }
+  

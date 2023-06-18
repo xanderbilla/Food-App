@@ -48,3 +48,13 @@
     justify-content: center;
     flex-wrap: wrap;
 }
+
+@media (max-width: 767px) {
+    .container{
+        padding: 36px 18px;
+    }
+
+  .select{
+    width: 150px;
+  }
+}

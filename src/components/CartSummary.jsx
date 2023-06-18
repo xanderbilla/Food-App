@@ -51,7 +51,7 @@ const CartSummary = () => {
       const path = '/client/orders';
       const amount = cart.total;
       try {
-        const response = await fetch('http://192.168.0.110:5555/razorpay', {
+        const response = await fetch('http://localhost:5555/razorpay', {
           method: 'POST',
           body: JSON.stringify({ amount }), // Pass amount in the request body
           headers: {
@@ -121,7 +121,7 @@ const CartSummary = () => {
   }, [errorMessage]);
 
   return (
-    <>
+    <div className={styles.container}>
       <h2 className={styles.title}>CART CHECKOUT</h2>
       <div className={styles.wrapper}>
         <div className={styles.userInfo}>
@@ -202,7 +202,7 @@ const CartSummary = () => {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

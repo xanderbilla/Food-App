@@ -27,6 +27,7 @@ const Cart = () => {
   const deleteItem = (productId) => {
     dispatch(removeProduct({ productId }));
   };
+  
   const getSizeLabel = (size) => {
     if (size === 0) {
       return "Small";
@@ -111,7 +112,7 @@ const Cart = () => {
               </table>
             </div>
             <div className={styles.d_change}>
-              <OdCart />
+              <OdCart cart={cart} />
             </div>
             <div className={styles.bottom}>
               <CartSummary />
