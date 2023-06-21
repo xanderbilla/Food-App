@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from '../styles/toggleMenu.module.css'
-import Sidebar from './Sidebar';
 import RestaurantOutlinedIcon from '@mui/icons-material/RestaurantOutlined';
 import ContactSupportOutlinedIcon from '@mui/icons-material/ContactSupportOutlined';
 import DeliveryDiningOutlinedIcon from '@mui/icons-material/DeliveryDiningOutlined';
