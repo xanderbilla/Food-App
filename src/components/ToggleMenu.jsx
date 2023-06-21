@@ -8,18 +8,6 @@ import { Link } from 'react-router-dom';
 import ManageAccountsOutlinedIcon from '@mui/icons-material/ManageAccountsOutlined';
 
 const ToggleMenu = ({ user }) => {
-    const [isOpen, setIsOpen] = useState(false)
-console.log(user)
-
-    const handleClick = () => {
-        setIsOpen(!isOpen);
-        if (!isOpen) {
-            document.body.classList.add(styles.noScroll);
-        } else {
-            document.body.classList.remove(styles.noScroll);
-        }
-    };
-
     return (
         <div className={styles.container}>
             <Link to='/cart'><div className={`${styles.cart} ${user ? styles.hide : ''}`}>
@@ -38,9 +26,6 @@ console.log(user)
             <Link to='/admin/dashboard'><div className={`${styles.cart}`}>
                 <ManageAccountsOutlinedIcon fontSize='large' style={{color:'white'}}/>
             </div></Link>
-            {
-                isOpen && <Sidebar user={user} isOpen={isOpen} setIsOpen={setIsOpen}/>
-            }
         </div>
     )
 }
