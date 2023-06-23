@@ -27,7 +27,7 @@
         },
         "foodAppAdminOrdersFunc": {
           "deploymentBucketName": "amplify-foodapp-dev-122050-deployment",
-          "s3Key": "amplify-builds/foodAppAdminOrdersFunc-794d476f6762736c7232-build.zip"
+          "s3Key": "amplify-builds/foodAppAdminOrdersFunc-56316d6d464a586c3946-build.zip"
         },
         "foodAppClientOrdersFunc": {
           "deploymentBucketName": "amplify-foodapp-dev-122050-deployment",

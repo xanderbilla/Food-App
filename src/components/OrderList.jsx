@@ -1,13 +1,26 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/orderList.module.css";
 import { API } from "aws-amplify";
+import SearchIcon from '@mui/icons-material/Search';
 
 const OrderList = ({ data }) => {
-  const apiName = 'foodAppApi';
+  console.log(data);
+  const apiName = "foodAppApi";
   const [orderData, setOrderData] = useState(data);
+  const [selectedProductIds, setSelectedProductIds] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const handleNextStageClick = (orderId) => {
+  useEffect(() => {
+    // Filter the order data based on the search query
+    const filteredData = data.filter((order) =>
+      order.orderId.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setOrderData(filteredData);
+  }, [data, searchQuery]);
+
+  const handleNextStageClick = async (orderId) => {
     const updatedData = orderData.map((order) => {
+      console.log(order.status);
       if (order.orderId === orderId) {
         let newStatus;
         switch (order.status) {
@@ -23,32 +36,21 @@ const OrderList = ({ data }) => {
           default:
             newStatus = order.status;
         }
-        // Update the status locally
         return { ...order, status: newStatus };
       }
       return order;
     });
-  
-    // Update the status to the API
-    const myInit = {
-      body: {
-        status: updatedData.find((order) => order.orderId === orderId)?.status,
-      },
-    };
-  
-    API.put(apiName, `/admin/orders/${orderId}`, myInit)
-      .then((response) => {
-        // Handle success response if needed
-      })
-      .catch((error) => {
-        console.log(error.response);
-      });
-  
-    // Update the state with the new status
-    setOrderData(updatedData);
-  };
 
-  const [selectedProductIds, setSelectedProductIds] = useState([]);
+    try {
+      await API.put(apiName, `/admin/orders/${orderId}`, {
+        body: { status: updatedData.find((order) => order.orderId === orderId).status }
+      });
+
+      setOrderData(updatedData);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
 
   const handleProductClick = (orderId, productId) => {
     setSelectedProductIds((prevSelectedProductIds) => {
@@ -62,9 +64,9 @@ const OrderList = ({ data }) => {
           { orderId, productIds: [productId] },
         ];
       } else {
-        const productIndex = prevSelectedProductIds[
-          orderIndex
-        ].productIds.findIndex((id) => id === productId);
+        const productIndex = prevSelectedProductIds[orderIndex].productIds.findIndex(
+          (id) => id === productId
+        );
 
         if (productIndex === -1) {
           return [
@@ -109,12 +111,23 @@ const OrderList = ({ data }) => {
     );
   };
 
-  const sortedData = [...data].sort((a, b) => {
+  const sortedData = [...orderData].sort((a, b) => {
     return new Date(b.timestamp) - new Date(a.timestamp);
   });
 
   return (
     <div className={styles.container}>
+      <div className={styles.search}>
+        <input
+          className={styles.input}
+        type="text"
+        placeholder="Search by Order ID"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <SearchIcon fontSize="medium"/>
+      </div>
+      <div className={styles.tableContainer}>
       <table className={styles.table}>
         <thead>
           <tr>
@@ -195,6 +208,7 @@ const OrderList = ({ data }) => {
           ))}
         </tbody>
       </table>
+      </div>
     </div>
   );
 };

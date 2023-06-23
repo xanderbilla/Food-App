@@ -1,7 +1,7 @@
 .dashboard {
     min-height: calc(100vh - 80px);
     padding: 14px;
-    margin: 30px 60px;
+    margin: 30px;
 }
 
 .heading {
@@ -63,3 +63,10 @@
     margin-top: 20px;
     font-size: 18px;
 }
+
+@media only screen and (max-width: 767px) {
+    .dashboard{
+        margin: 14px;
+    }
+  }
+  

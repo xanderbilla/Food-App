@@ -159,7 +159,7 @@ app.put('/admin/orders/:orderId', function (req, res) {
 
   params.UpdateExpression = params.UpdateExpression.slice(0, -1); // Remove the trailing comma
 
-  docClient.update(params, function (err, data) {
+  dynamodb.update(params, function (err, data) {
     if (err) {
       console.error('Unable to update item. Error JSON:', JSON.stringify(err, null, 2));
       res.status(500).json({ message: 'Failed to update the item' });
