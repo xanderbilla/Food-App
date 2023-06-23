@@ -9,6 +9,7 @@ const OrderList = ({ data }) => {
   const [orderData, setOrderData] = useState(data);
   const [selectedProductIds, setSelectedProductIds] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [expandedOrders, setExpandedOrders] = useState([]);
 
   useEffect(() => {
     // Filter the order data based on the search query
@@ -53,6 +54,18 @@ const OrderList = ({ data }) => {
   };
 
   const handleProductClick = (orderId, productId) => {
+    const expandedOrderIndex = expandedOrders.findIndex(
+      (order) => order === orderId
+    );
+    if (expandedOrderIndex === -1) {
+      setExpandedOrders([...expandedOrders, orderId]);
+    } else {
+      setExpandedOrders([
+        ...expandedOrders.slice(0, expandedOrderIndex),
+        ...expandedOrders.slice(expandedOrderIndex + 1),
+      ]);
+    }
+
     setSelectedProductIds((prevSelectedProductIds) => {
       const orderIndex = prevSelectedProductIds.findIndex(
         (item) => item.orderId === orderId
@@ -111,6 +124,10 @@ const OrderList = ({ data }) => {
     );
   };
 
+  const isOrderExpanded = (orderId) => {
+    return expandedOrders.includes(orderId);
+  };
+
   const sortedData = [...orderData].sort((a, b) => {
     return new Date(b.timestamp) - new Date(a.timestamp);
   });
@@ -120,94 +137,92 @@ const OrderList = ({ data }) => {
       <div className={styles.search}>
         <input
           className={styles.input}
-        type="text"
-        placeholder="Search by Order ID"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
+          type="text"
+          placeholder="Search by Order ID"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
         <SearchIcon fontSize="medium"/>
       </div>
       <div className={styles.tableContainer}>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th className={styles.th}>Order ID</th>
-            <th className={styles.th}>Products</th>
-            <th className={styles.th}>Price</th>
-            <th className={styles.th}>Quantity</th>
-            <th className={styles.th}>Address</th>
-            <th className={styles.th}>Payment Mode</th>
-            <th className={styles.th}>Date &amp; Time</th>
-            <th className={styles.th}>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {sortedData.map((order, index) => (
-            <tr key={order.orderId}>
-              <td className={styles.td}>{order.orderId}</td>
-              <td className={styles.td}>
-                {order.product.products.map((product) => (
-                  <p
-                    key={product.id}
-                    className={`${styles.productName} ${
-                      isProductSelected(order.orderId, product.id)
-                        ? styles.selectedProduct
-                        : ""
-                    }`}
-                    onClick={() =>
-                      handleProductClick(order.orderId, product.id)
-                    }
-                  >
-                    {product.title}
-                  </p>
-                ))}
-                {selectedProductIds.some(
-                  (item) => item.orderId === order.orderId
-                ) && (
-                  <div className={styles.productDetails}>
-                    {order.product.products.map((product) => {
-                      if (isProductSelected(order.orderId, product.id)) {
-                        return (
-                          <div key={product.id}>
-                            <p>
-                              <strong>Quantity:</strong> {product.quantity}
-                            </p>
-                            <p>
-                              <strong>Price:</strong>{" "}
-                              {product.price.toFixed(2)}
-                            </p>
-                            <p>
-                              <strong>Extras:</strong>{" "}
-                              {product.extras.join(", ")}
-                            </p>
-                          </div>
-                        );
-                      }
-                      return null;
-                    })}
-                  </div>
-                )}
-              </td>
-              <td className={styles.td}>₹{order.product.total.toFixed(2)}</td>
-              <td className={styles.td}>{order.product.quantity}</td>
-              <td className={styles.td}>{order.address}</td>
-              <td className={styles.td}>{order.paymentMode}</td>
-              <td className={styles.td}>{order.timestamp}</td>
-              <td className={styles.td}>
-                {order.status}
-                {order.status !== "Delivered" && (
-                  <button
-                    className={styles.button}
-                    onClick={() => handleNextStageClick(order.orderId)}
-                  >
-                    Next Stage
-                  </button>
-                )}
-              </td>
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th className={styles.th}>Order ID</th>
+              <th className={styles.th}>Products</th>
+              <th className={styles.th}>Price</th>
+              <th className={styles.th}>Quantity</th>
+              <th className={styles.th}>Address</th>
+              <th className={styles.th}>Payment Mode</th>
+              <th className={styles.th}>Date &amp; Time</th>
+              <th className={styles.th}>Status</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {sortedData.map((order, index) => (
+              <tr key={order.orderId}>
+                <td className={styles.td}>{order.orderId}</td>
+                <td className={styles.td}>
+                  {order.product.products.map((product) => (
+                    <p
+                      key={product.id}
+                      className={`${styles.productName} ${
+                        isProductSelected(order.orderId, product.id)
+                          ? styles.selectedProduct
+                          : ""
+                      }`}
+                      onClick={() =>
+                        handleProductClick(order.orderId, product.id)
+                      }
+                    >
+                      {product.title}
+                    </p>
+                  ))}
+                  {isOrderExpanded(order.orderId) && (
+                    <div className={styles.productDetails}>
+                      {order.product.products.map((product) => {
+                        if (isProductSelected(order.orderId, product.id)) {
+                          return (
+                            <div key={product.id}>
+                              <p>
+                                <strong>Quantity:</strong> {product.quantity}
+                              </p>
+                              <p>
+                                <strong>Price:</strong>{" "}
+                                {product.price.toFixed(2)}
+                              </p>
+                              <p>
+                                <strong>Extras:</strong>{" "}
+                                {product.extras.join(", ")}
+                              </p>
+                            </div>
+                          );
+                        }
+                        return null;
+                      })}
+                    </div>
+                  )}
+                </td>
+                <td className={styles.td}>₹{order.product.total.toFixed(2)}</td>
+                <td className={styles.td}>{order.product.quantity}</td>
+                <td className={styles.td}>{order.address}</td>
+                <td className={styles.td}>{order.paymentMode}</td>
+                <td className={styles.td}>{order.timestamp}</td>
+                <td className={styles.td}>
+                  {order.status}
+                  {order.status !== "Delivered" && (
+                    <button
+                      className={styles.button}
+                      onClick={() => handleNextStageClick(order.orderId)}
+                    >
+                      Next Stage
+                    </button>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
