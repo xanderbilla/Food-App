@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Order from './pages/Order';
 import Navbar from './components/Navbar'
@@ -79,15 +79,15 @@ function App() {
             <Route path='/menu/:category' element={<Category data={data} />} />
             {isLogin ? (
               <>
-              <Route path="/admin" element={<Dashboard />} />
-            <Route path="/admin/dashboard" element={<Dashboard />} />
-          </>
-        ) : (
-          <>
-            <Route path="/admin/dashboard" element={<Navigate to="/admin" />} />
-            <Route path="/admin" element={<Admin />} />
-          </>
-        )}
+                <Route path="/admin" element={<Dashboard />} />
+                <Route path="/admin/dashboard" element={<Dashboard />} />
+              </>
+            ) : (
+              <>
+                <Route path="/admin/dashboard" element={<Navigate to="/admin" />} />
+                <Route path="/admin" element={<Admin />} />
+              </>
+            )}
           </Routes>
           <Footer />
         </>
