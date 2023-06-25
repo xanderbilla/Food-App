@@ -120,7 +120,7 @@ const CartSummary = () => {
     }
     return () => clearTimeout(timeout);
   }, [errorMessage]);
-
+console.log(cart)
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Cart Summary</h1>

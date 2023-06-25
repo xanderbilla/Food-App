@@ -12,7 +12,7 @@ const Product = () => {
   const [data, setData] = useState({});
   const loc = useLocation().pathname.split('/')[2];
   const [imageUrls, setImageUrls] = useState('');
-  const [selectedExtras, setSelectedExtras] = useState([]); // Add selectedExtras state
+  const [selectedExtras, setSelectedExtras] = useState([]);
   const dispatch = useDispatch();
 
   const apiName = 'foodAppApi';
