@@ -7,19 +7,23 @@ import { useNavigate } from 'react-router-dom';
 import { resetCart } from '../redux/cartRedux';
 
 const CartSummary = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
   const [phone, setPhone] = useState('');
   const [paymentMethod, setPaymentMethod] = useState(null);
-  const discount = 54;
+  const discount = 40; // Updated the discount value
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
   const handleCheckout = async () => {
     if (!paymentMethod) {
       setErrorMessage('Please select a payment method.');
+      return;
+    }
+    if (!name || !address || !phone) {
+      setErrorMessage('Please fill in all the required fields.');
       return;
     }
     setErrorMessage('');
@@ -35,7 +39,7 @@ const CartSummary = () => {
           product: cart,
           address: address,
           paymentId: generatePaymentId(),
-          status: 'Pending'
+          status: 'Pending',
         },
       };
 
@@ -62,8 +66,7 @@ const CartSummary = () => {
         console.log(data);
 
         const options = {
-          // key: 'rzp_live_UTxAbdghList7p', //Warning: Only use in live environment
-          key: 'rzp_test_JKF1DFL4zhVRpb',
+          key: 'rzp_test_JKF1DFL4zhVRpb', // Updated the Razorpay test key
           currency: data.currency,
           amount: data.amount,
           description: 'Wallet Transaction',
@@ -84,7 +87,7 @@ const CartSummary = () => {
                 product: cart,
                 address: address,
                 paymentId: response.razorpay_payment_id,
-                status: 'Pending'
+                status: 'Pending',
               },
             };
 
@@ -115,93 +118,98 @@ const CartSummary = () => {
         setErrorMessage('');
       }, 2000);
     }
-
-    // Clear the timeout when the component unmounts or when the errorMessage changes
     return () => clearTimeout(timeout);
   }, [errorMessage]);
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>CART CHECKOUT</h2>
+      <h1 className={styles.title}>Cart Summary</h1>
       <div className={styles.wrapper}>
-        <div className={styles.userInfo}>
-          <input
-            className={styles.input}
-            type="text"
-            name="name"
-            placeholder="Name"
-            onChange={(e) => setName(e.target.value)}
-          />
-          <input
-            className={styles.input}
-            type="text"
-            name="address"
-            placeholder="Address"
-            onChange={(e) => setAddress(e.target.value)}
-          />
-          <div className={styles.phone}>
-            <input
-              className={styles.input}
-              type="text"
-              name="phone"
-              placeholder="Phone Number"
-              onChange={(e) => setPhone(e.target.value)}
-            />
-            <button className={styles.vrfyBtn}>Verify</button>
-          </div>
+      <div className={styles.orderDetails}>
+        <div className={styles.quantity}>
+          <span className={styles.subheading}>Quantity:</span>
+          {cart.quantity}
         </div>
-        <div className={styles.summary}>
-          <div className={styles.text}>
-            <div className={styles.key}>Total</div>
-            <div className={styles.value}>₹{cart.total}</div>
-          </div>
-          <div className={styles.text}>
-            <div className={styles.key}>Discount</div>
-            <div className={styles.value}>₹{discount}</div>
-          </div>
-          <div className={styles.border} />
-          <div className={styles.text}>
-            <div className={styles.key}>Sub Total</div>
-            <div className={styles.value}>₹{cart.total - discount}</div>
-          </div>
-          <div className={styles.paymentOptions}>
-            <label
-              className={`${styles.label} ${paymentMethod === 'cash' ? styles.selected : ''
-                }`}
-            >
-              <input
-                type="radio"
-                name="paymentMethod"
-                value="cash"
-                checked={paymentMethod === 'cash'}
-                onChange={() => setPaymentMethod('cash')}
-                style={{ display: 'none' }}
-              />
-              Cash on Delivery
-            </label>
-            <label
-              className={`${styles.label} ${paymentMethod === 'card' ? styles.selected : ''
-                }`}
-            >
-              <input
-                type="radio"
-                name="paymentMethod"
-                value="card"
-                checked={paymentMethod === 'card'}
-                onChange={() => setPaymentMethod('card')}
-                style={{ display: 'none' }}
-              />
-              Card Payment / UPI
-            </label>
-          </div>
-          {errorMessage && (
-            <div className={styles.errorMessage}>{errorMessage}</div>
-          )}
-          <button className={styles.button} onClick={handleCheckout}>
-            CHECKOUT NOW!
-          </button>
+        <div className={styles.total}>
+          <span className={styles.subheading}>Total:</span>
+          {cart.total}
+        </div>
+        <div className={styles.discount}>
+          <span className={styles.subheading}>Discount:</span>
+          {discount}
+        </div>
+        <div className={styles.subTotal}>
+          <span className={styles.subheading}>Sub Total:</span>
+          {cart.total - discount}
         </div>
       </div>
+      <div className={styles.payment}>
+        <span className={styles.subTitle}>Shipping Details</span>
+        <form action="" className={styles.form}>
+          <div className={styles.inputCol}>
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              className={styles.input}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </div>
+          <div className={styles.inputCol}>
+            <textarea
+              type="text"
+              name="address"
+              placeholder="Address"
+              className={styles.inputArea}
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              required
+            />
+          </div>
+          <div className={styles.inputCol}>
+            <input
+              type="number"
+              name="phone"
+              placeholder="Your Phone"
+              className={styles.input}
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              required
+            />
+          </div>
+        </form>
+        <div className={styles.paymentMode}>
+          <div className={styles.paymentOption}>
+            <input
+              className={styles.radio}
+              type="radio"
+              id="card"
+              name="paymentMethod"
+              value="card"
+              checked={paymentMethod === 'card'}
+              onChange={() => setPaymentMethod('card')}
+            />
+            <label className={styles.radioLabel} htmlFor="card">Card / NetBanking / UPI</label>
+          </div>
+          <div className={styles.paymentOption}>
+            <input
+              className={styles.radio}
+              type="radio"
+              id="cash"
+              name="paymentMethod"
+              value="cash"
+              checked={paymentMethod === 'cash'}
+              onChange={() => setPaymentMethod('cash')}
+            />
+            <label className={styles.radioLabel} htmlFor="cash">Cash</label>
+          </div>
+        </div>
+      </div>
+      </div>
+      <button className={styles.button} onClick={handleCheckout}>Order Now</button>
+      {errorMessage && <p className={styles.error}>{errorMessage}</p>}
     </div>
   );
 };

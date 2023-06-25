@@ -8,6 +8,7 @@
 .head {
     font-size: 42px;
     font-weight: 300;
+    margin-bottom: 20px;
     text-align: center;
 }
 
@@ -54,6 +55,10 @@
 }
 
 @media (max-width: 767px) {
+    .container {
+        padding: 24px;
+    }
+
     .head {
         font-size: 32px;
     }
@@ -65,5 +70,9 @@
     .button {
         height: 40px;
         width: 120px;
+    }
+
+    .listItem{
+        flex-direction: column;
     }
 }

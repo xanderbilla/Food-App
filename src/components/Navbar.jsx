@@ -18,7 +18,7 @@ const Navbar = ({ user }) => {
         <div className={styles.container}>
             <div className={styles.left}>
                 <Link style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center'}} to='/'>
-                    <img src="/img/logo.png" alt="" width="200" height="50" />
+                    <img src="/img/logo.png" alt="" className={styles.img} />
                 </Link>
                 <ul className={styles.list}>
                     <li className={styles.listItem}><Link style={{ textDecoration: 'none', color: 'inherit' }} to='/menu'>MENU</Link></li>

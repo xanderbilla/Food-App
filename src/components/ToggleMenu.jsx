@@ -5,13 +5,16 @@ import ContactSupportOutlinedIcon from '@mui/icons-material/ContactSupportOutlin
 import DeliveryDiningOutlinedIcon from '@mui/icons-material/DeliveryDiningOutlined';
 import { Link } from 'react-router-dom';
 import ManageAccountsOutlinedIcon from '@mui/icons-material/ManageAccountsOutlined';
+import { useSelector } from 'react-redux';
 
 const ToggleMenu = ({ user }) => {
+    const quantity = useSelector(state => state.cart.quantity)
+
     return (
         <div className={styles.container}>
             <Link to='/cart'><div className={`${styles.cart} ${user ? styles.hide : ''}`}>
                 <img src="/img/cart.png" alt="" width="30" height="30" />
-                <div className={styles.counter}>2</div>
+                <div className={styles.counter}>{quantity}</div>
             </div></Link>
             <Link to='/menu'><div className={`${styles.cart}`}>
                 <RestaurantOutlinedIcon fontSize='large' style={{color:'white'}}/>

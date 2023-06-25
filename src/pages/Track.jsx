@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import TrackResult from '../components/TrackResult'
 import styles from '../styles/track.module.css'
 import { API } from 'aws-amplify';
+import SearchIcon from '@mui/icons-material/Search';
 
 const Track = () => {
   const [phone, setPhone] = useState('')
@@ -66,7 +67,7 @@ const Track = () => {
             onChange={handleInputChange}
           />
           <button className={styles.button} onClick={handleSearch}>
-            Search
+            <SearchIcon />
           </button>
         </div>
         {data.length !== 0 && <TrackResult data={data} onCancel={handleCancel} />}

@@ -35,7 +35,7 @@ const PizzaCard = ({ item }) => {
         <div className={styles.right}>
           <h1 className={styles.title}>{item.title}</h1>
           <span className={styles.price}>₹ {getMinimumPrice()}</span>
-          <p className={styles.desc}>{item.desc.slice(0,60)}</p>
+          <p className={styles.desc}>{item.desc.slice(0,30)+'...'}</p>
         </div>
       </div>
     </Link>

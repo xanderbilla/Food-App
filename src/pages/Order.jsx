@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import styles from "../styles//Order.module.css";
+import styles from "../styles/Order.module.css";
 import { useEffect, useState } from "react";
 import { API } from "aws-amplify";
 

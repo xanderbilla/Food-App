@@ -9,7 +9,7 @@ const TrackResult = ({ data, onCancel }) => {
   );
 
   const handleCancel = (orderId) => {
-    onCancel(orderId); // Invoke the onCancel callback from Track.jsx
+    onCancel(orderId);
   };
 
   const renderCancelBtn = (status, orderId) => {
@@ -20,7 +20,8 @@ const TrackResult = ({ data, onCancel }) => {
   };
 
   return (
-    <table className={styles.table}>
+    <div className={styles.tableContainer}>
+      <table className={styles.table}>
       <thead>
         <tr>
           <th className={styles.th}>Order ID</th>
@@ -29,7 +30,7 @@ const TrackResult = ({ data, onCancel }) => {
           <th className={styles.th}>Address</th>
           <th className={styles.th}>Amount</th>
           <th className={styles.th}>Status</th>
-          <th className={styles.th}></th>
+          <th className={styles.th}>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -52,6 +53,7 @@ const TrackResult = ({ data, onCancel }) => {
         ))}
       </tbody>
     </table>
+    </div>
   );
 };
 

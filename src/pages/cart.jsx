@@ -17,8 +17,13 @@ const Cart = () => {
       const imagePromises = cart.products.map((product) =>
         getImage(product.img)
       );
-      const images = await Promise.all(imagePromises);
-      setProductImages(images);
+      try {
+        const images = await Promise.all(imagePromises);
+        setProductImages(images);
+      } catch (error) {
+        console.error("Error fetching product images:", error);
+        setProductImages([]);
+      }
     };
 
     fetchProductImages();
@@ -27,7 +32,7 @@ const Cart = () => {
   const deleteItem = (productId) => {
     dispatch(removeProduct({ productId }));
   };
-  
+
   const getSizeLabel = (size) => {
     if (size === 0) {
       return "Small";
@@ -65,11 +70,13 @@ const Cart = () => {
                     <tr className={styles.tr} key={product.prodId}>
                       <td className={styles.td}>
                         <div className={styles.imgContainer}>
-                          <img
-                            className={styles.img}
-                            src={productImages[index]}
-                            alt={product.title}
-                          />
+                          {productImages[index] && (
+                            <img
+                              className={styles.img}
+                              src={productImages[index]}
+                              alt={product.title}
+                            />
+                          )}
                         </div>
                       </td>
                       <td className={styles.td}>
@@ -80,8 +87,8 @@ const Cart = () => {
                       </td>
                       <td className={styles.td}>
                         {product.extras.length > 0 ? (
-                          product.extras.map((amt) => (
-                            <span className={styles.badge} key={amt}>
+                          product.extras.map((amt, index) => (
+                            <span className={styles.badge} key={index}>
                               {amt}
                             </span>
                           ))
@@ -116,6 +123,7 @@ const Cart = () => {
             </div>
             <div className={styles.bottom}>
               <CartSummary />
+              
             </div>
           </>
           :

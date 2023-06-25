@@ -1,6 +1,6 @@
 .container {
   padding: 30px;
-  height: auto;
+  min-height: calc(100vh - 360px);
 }
 
 .header {
@@ -18,10 +18,7 @@
 .bottom {
   display: flex;
   align-items: center;
-  flex-direction: column;
-  gap: 14px;
-  position: sticky;
-  top: 0;
+  justify-content: flex-end;
 }
 
 .top {
@@ -140,7 +137,7 @@
   background-color: #d1421e52;
 }
 
-.message{
+.message {
   height: calc(100vh - 498px);
   display: flex;
   align-items: center;
@@ -157,6 +154,10 @@
 
   .top {
     display: none;
+  }
+
+  .bottom {
+    justify-content: center;
   }
 
   .trTitle {
