@@ -44,16 +44,16 @@ const Dashboard = () => {
       });
   };
 
-  useEffect(() => {
-    const fetchOrder = async () => {
-      try {
-        const response = await API.get(apiName, '/admin/orders');
-        setOrderData(response);
-      } catch (error) {
-        console.log(error.response);
-      }
-    };
+  const fetchOrder = async () => {
+    try {
+      const response = await API.get(apiName, '/admin/orders');
+      setOrderData(response);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
 
+  useEffect(() => {
     fetchOrder();
   }, []);
 
@@ -85,7 +85,7 @@ const Dashboard = () => {
         </button>
       </div>
       <div className={styles["tab-content"]}>
-        {activeTab === 1 && <ItemListD data={prodData} onDelete={handleDelete} />}
+        {activeTab === 1 && <ItemListD data={prodData} onDelete={handleDelete} fetch={fetchProdData} />}
         {activeTab === 2 && <OrderList data={orderData} />}
       </div>
     </div>

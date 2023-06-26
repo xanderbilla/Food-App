@@ -6,7 +6,15 @@ import { useLocation } from 'react-router-dom';
 const Category = ({ data }) => {
   const path = useLocation().pathname.split('/')[2];
   const [sortOption, setSortOption] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8; 
+
   const filteredData = data.filter(item => item.category === path);
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
 
   const handleSortChange = e => {
     const selectedOption = e.target.value;
@@ -17,6 +25,12 @@ const Category = ({ data }) => {
     } else if (selectedOption === 'Price High To Low') {
       filteredData.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
     }
+
+    setCurrentPage(1); 
+  };
+
+  const handlePageChange = pageNumber => {
+    setCurrentPage(pageNumber);
   };
 
   return (
@@ -43,9 +57,24 @@ const Category = ({ data }) => {
       </div>
       <div className={styles.bottom}>
         <div className={styles.cardContainer}>
-          {filteredData.map(item => (
+          {currentItems.map(item => (
             <PizzaCard key={item.title} item={item} />
           ))}
+        </div>
+        <div className={styles.pagination}>
+          {Array.from({ length: totalPages }, (_, index) => index + 1).map(
+            pageNumber => (
+              <button
+                key={pageNumber}
+                className={`${styles.paginationBtn} ${
+                  currentPage === pageNumber ? styles.active : ''
+                }`}
+                onClick={() => handlePageChange(pageNumber)}
+              >
+                {pageNumber}
+              </button>
+            )
+          )}
         </div>
       </div>
     </div>
