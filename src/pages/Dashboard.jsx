@@ -44,16 +44,16 @@ const Dashboard = () => {
       });
   };
 
-  useEffect(() => {
-    const fetchOrder = async () => {
-      try {
-        const response = await API.get(apiName, '/admin/orders');
-        setOrderData(response);
-      } catch (error) {
-        console.log(error.response);
-      }
-    };
+  const fetchOrder = async () => {
+    try {
+      const response = await API.get(apiName, '/admin/orders');
+      setOrderData(response);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
 
+  useEffect(() => {
     fetchOrder();
   }, []);
 
@@ -70,6 +70,7 @@ const Dashboard = () => {
       {
         isClick ? <NewProd isClick={isClick} setIsClick={setIsClick} onSubmit={handleNewProdSubmit} /> : ''
       }
+<<<<<<< HEAD
       {isClick ?
         ''
         :
@@ -94,6 +95,26 @@ const Dashboard = () => {
           </div>
         </>
       }
+=======
+      <div className={styles.tab_header}>
+        <button
+          className={activeTab === 1 ? styles.active : ""}
+          onClick={() => handleTabClick(1)}
+        >
+          Products
+        </button>
+        <button
+          className={activeTab === 2 ? styles.active : ""}
+          onClick={() => handleTabClick(2)}
+        >
+          Orders
+        </button>
+      </div>
+      <div className={styles["tab-content"]}>
+        {activeTab === 1 && <ItemListD data={prodData} onDelete={handleDelete} fetch={fetchProdData} />}
+        {activeTab === 2 && <OrderList data={orderData} />}
+      </div>
+>>>>>>> otp-test
     </div>
   );
 };

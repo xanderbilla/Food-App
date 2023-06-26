@@ -17,6 +17,53 @@ const CartSummary = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
+  const fetchCurrentLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+          fetchAddressFromCoordinates(latitude, longitude);
+        },
+        (error) => {
+          console.log('Error getting current location:', error);
+        }
+      );
+    } else {
+      console.log('Geolocation is not supported by this browser.');
+    }
+  };
+
+  const fetchAddressFromCoordinates = async (latitude, longitude) => {
+    try {
+      const response = await fetch(
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyC-cgsLxHceyQB4cvMfEXW6rrrnEAAsJvs`
+      );
+      const data = await response.json();
+      const formattedAddress = data.results[0]?.formatted_address;
+      // setAddress(formattedAddress || '');
+      console.log(data);
+    } catch (error) {
+      console.log('Error fetching address:', error);
+    }
+  };
+
+  useEffect(() => {
+    let timeout;
+    if (errorMessage) {
+      timeout = setTimeout(() => {
+        setErrorMessage('');
+      }, 2000);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [errorMessage]);
+
+  useEffect(() => {
+    fetchCurrentLocation();
+  }, []);
+
+
   const handleCheckout = async () => {
     if (!paymentMethod) {
       setErrorMessage('Please select a payment method.');

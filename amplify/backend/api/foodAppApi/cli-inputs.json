@@ -8,19 +8,6 @@
         "setting": "open"
       }
     },
-    "/admin/products": {
-      "name": "/admin/products",
-      "lambdaFunction": "foodAppAdminProdFunc",
-      "permissions": {
-        "setting": "private",
-        "auth": [
-          "create",
-          "read",
-          "update",
-          "delete"
-        ]
-      }
-    },
     "/client/orders": {
       "name": "/client/orders",
       "lambdaFunction": "foodAppClientOrdersFunc",
@@ -32,7 +19,26 @@
       "name": "/admin/orders",
       "lambdaFunction": "foodAppAdminOrdersFunc",
       "permissions": {
-        "setting": "open"
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ]
+      }
+    },
+    "/admin/products": {
+      "name": "/admin/products",
+      "lambdaFunction": "foodAppAdminProdFunc",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ]
       }
     }
   }

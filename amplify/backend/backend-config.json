@@ -16,14 +16,6 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "foodAppAdminProdFunc"
-        },
-        {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "function",
           "resourceName": "foodAppClientOrdersFunc"
         },
         {
@@ -33,6 +25,14 @@
           ],
           "category": "function",
           "resourceName": "foodAppAdminOrdersFunc"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "foodAppAdminProdFunc"
         }
       ],
       "providerPlugin": "awscloudformation",
