@@ -1,6 +1,6 @@
 .container {
   width: 430px;
-  height: 150px;
+  height: 180px;
   padding: 10px 14px;
   display: flex;
   align-items: center;
@@ -27,7 +27,7 @@
 }
 
 .title {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: bold;
   color: #d1411e;
 }
@@ -61,7 +61,7 @@
   }
 
   .title {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .price,

@@ -73,17 +73,7 @@ const Product = () => {
     dispatch(addProduct(productData));
   };
 
-  const getSizeLabel = (size) => {
-    if (size === 0) {
-      return 'Small';
-    } else if (size === 1) {
-      return 'Medium';
-    } else if (size === 2) {
-      return 'Large';
-    } else {
-      return 'Unknown';
-    }
-  };
+  console.log(data.size);
 
   return (
     <div className={styles.container}>
@@ -101,8 +91,12 @@ const Product = () => {
           {data.size &&
             data.size.map((item, index) => (
               <div className={styles.size} key={index} onClick={() => setSize(index)}>
-                <img src="/img/size.png" alt="" className={styles.img} />
-                <span className={styles.number}>{getSizeLabel(index)}</span>
+                {data.category==='Snacks' && <img src="/img/snack_size.png" alt="" className={styles.img} />}
+                {data.category==='Beverage' && <img src="/img/dr_size.png" alt="" className={styles.img} />}
+                {data.category==='Meal' && <img src="/img/meal_size.png" alt="" className={styles.img} />}
+                {data.category==='Breakfast' && <img src="/img/bf_size.png" alt="" className={styles.img} />}
+                {data.category==='Pizza' && <img src="/img/size.png" alt="" className={styles.img} />}
+                <span className={styles.number}>{item}</span>
               </div>
             ))
           }

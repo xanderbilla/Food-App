@@ -12,7 +12,6 @@ const OrderList = ({ data }) => {
   const [expandedOrders, setExpandedOrders] = useState([]);
 
   useEffect(() => {
-    // Filter the order data based on the search query
     const filteredData = data.filter((order) =>
       order.orderId.toLowerCase().includes(searchQuery.toLowerCase())
     );

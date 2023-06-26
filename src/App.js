@@ -37,15 +37,17 @@ function App() {
   const apiName = 'foodAppApi';
   const path = '/client/products';
 
+  const fetchData = async () => {
+    try {
+      const response = await API.get(apiName, path);
+      setData(response);
+      console.log(response);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await API.get(apiName, path);
-        setData(response);
-      } catch (error) {
-        console.log(error.response);
-      }
-    };
 
     fetchData();
   }, []);
@@ -75,8 +77,8 @@ function App() {
             <Route path='/order/:id' element={<Order />} />
             <Route path='/product/:id' element={<Product />} />
             <Route path='/cart' element={<Cart />} />
-            <Route path='/menu' element={<Menu data={data} />} />
-            <Route path='/menu/:category' element={<Category data={data} />} />
+            <Route path='/menu' element={<Menu data={data} fetch={fetchData}/>} />
+            <Route path='/menu/:category' element={<Category data={data} fetch={fetchData}/>} />
             {isLogin ? (
               <>
               <Route path="/admin" element={<Dashboard />} />

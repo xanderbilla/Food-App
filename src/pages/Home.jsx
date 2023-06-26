@@ -1,11 +1,12 @@
 import PizzaList from '../components/PizzaList'
 import Featured from '../components/Featured'
 
-const Home = ({data}) => {
+const Home = ({ data }) => {
+  const limit = data.slice(0, 6);
   return (
     <>
       <Featured />
-      <PizzaList items={data} />
+      <PizzaList items={limit} />
     </>
   )
 }

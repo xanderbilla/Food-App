@@ -115,6 +115,28 @@
   background-color: #d1421eaf;
 }
 
+
+.search{
+  margin: 10px 0;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16rem;
+  border-radius: 8px;
+  border: 1px solid #d1411e;
+}
+
+.input{
+  font-size: 16px;
+  width: 100%;
+  border: none
+}
+
+.input:focus{
+  outline: none;
+}
+
 @media (max-width: 767px) {
   .tableContainer {
     max-height: 800px; 
