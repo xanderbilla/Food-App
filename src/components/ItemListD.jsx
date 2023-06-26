@@ -27,11 +27,6 @@ const ItemListD = ({ data, onDelete, fetch}) => {
     setIsEditClicked(true);
   };
 
-  const handleEdit = (prodId) => {
-    setSelectedProductId(prodId);
-    setIsEditClicked(true);
-  };
-
   useEffect(() => {
     const fetchImageUrls = async () => {
       const currentPageItems = itemData.slice(

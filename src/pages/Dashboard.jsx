@@ -70,32 +70,6 @@ const Dashboard = () => {
       {
         isClick ? <NewProd isClick={isClick} setIsClick={setIsClick} onSubmit={handleNewProdSubmit} /> : ''
       }
-<<<<<<< HEAD
-      {isClick ?
-        ''
-        :
-        <>
-          <div className={styles.tab_header}>
-            <button
-              className={activeTab === 1 ? styles.active : ""}
-              onClick={() => handleTabClick(1)}
-            >
-              Products
-            </button>
-            <button
-              className={activeTab === 2 ? styles.active : ""}
-              onClick={() => handleTabClick(2)}
-            >
-              Orders
-            </button>
-          </div>
-          <div className={styles["tab-content"]}>
-            {activeTab === 1 && <ItemListD data={prodData} onDelete={handleDelete} />}
-            {activeTab === 2 && <OrderList data={orderData} />}
-          </div>
-        </>
-      }
-=======
       <div className={styles.tab_header}>
         <button
           className={activeTab === 1 ? styles.active : ""}
@@ -114,7 +88,6 @@ const Dashboard = () => {
         {activeTab === 1 && <ItemListD data={prodData} onDelete={handleDelete} fetch={fetchProdData} />}
         {activeTab === 2 && <OrderList data={orderData} />}
       </div>
->>>>>>> otp-test
     </div>
   );
 };
