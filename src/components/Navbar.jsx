@@ -3,22 +3,23 @@ import styles from "../styles/Navbar.module.css";
 import ToggleMenu from "./ToggleMenu";
 import { Auth } from "aws-amplify";
 import { useSelector } from 'react-redux';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Navbar = ({ user }) => {
     const quantity = useSelector(state => state.cart.quantity)
     const handleLogout = async () => {
         try {
-          await Auth.signOut();
-          window.location.replace('/');
+            await Auth.signOut();
+            window.location.replace('/');
         } catch (error) {
-          console.log('Error signing out:', error);
+            console.log('Error signing out:', error);
         }
-      };
+    };
     return (
         <div className={styles.container}>
             <div className={styles.left}>
-                <Link style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center'}} to='/'>
-                    <img src="/img/logo.png" alt="" className={styles.img} />
+                <Link style={{ textDecoration: 'none', color: 'inherit', display: 'flex', alignItems: 'center' }} to='/'>
+                    <LazyLoadImage src="/img/logo.png" alt="" className={styles.img} />
                 </Link>
                 <ul className={styles.list}>
                     <li className={styles.listItem}><Link style={{ textDecoration: 'none', color: 'inherit' }} to='/menu'>MENU</Link></li>
@@ -35,7 +36,7 @@ const Navbar = ({ user }) => {
             </div>
             <div className={`${styles.center} ${user ? styles.hide : ''}`}>
                 <div className={styles.callButton}>
-                    <img src="/img/telephone.png" alt="" className={styles.callImg} />
+                    <LazyLoadImage src="/img/telephone.png" alt="" className={styles.callImg} />
                 </div>
                 <div className={styles.texts}>
                     <div className={styles.text}>ORDER NOW!</div>
@@ -45,14 +46,14 @@ const Navbar = ({ user }) => {
             <div className={styles.right}>
                 <div className={`${styles.cart} ${user ? styles.hide : ''}`}>
                     <Link style={{ textDecoration: 'none', color: 'inherit' }} to='/cart'>
-                        <img src="/img/cart.png" alt="" width="30" height="30" />
+                        <LazyLoadImage src="/img/cart.png" alt="" width="30" height="30" />
                         <div className={styles.counter}>{quantity}</div>
                     </Link>
                 </div>
                 {user ?
                     <div className={styles.logout}>
                         <button className={styles.lgtBtn} onClick={handleLogout}>
-                            <img src="/img/logout.png" alt="" width="30" height="30" />
+                            <LazyLoadImage src="/img/logout.png" alt="" width="30" height="30" />
                         </button>
                     </div>
                     :

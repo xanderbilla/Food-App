@@ -27,7 +27,7 @@
 }
 
 .title {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: bold;
   color: #d1411e;
 }
@@ -61,7 +61,7 @@
   }
 
   .title {
-    font-size: 20px;
+    font-size: 24px;
   }
 
   .price,
@@ -71,10 +71,18 @@
 }
 
 /* Media Query for low resolution  Tablets, Ipads */
-@media (min-width: 481px) and (max-width: 767px) {}
+@media (min-width: 481px) and (max-width: 767px) {
+  .container{
+    width: 430px;
+  }
+}
 
 /* Media Query for Tablets Ipads portrait mode */
-@media (min-width: 768px) and (max-width: 1024px) {}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container{
+    width: 430px;
+  }
+}
 
 /* Media Query for Laptops and Desktops */
 @media (min-width: 1025px) and (max-width: 1280px) {}

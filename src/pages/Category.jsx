@@ -2,15 +2,17 @@ import { useState } from 'react';
 import styles from '../styles/category.module.css';
 import PizzaCard from '../components/PizzaCard';
 import { useLocation } from 'react-router-dom';
+import SearchIcon from '@mui/icons-material/Search';
 
 const Category = ({ data }) => {
   const path = useLocation().pathname.split('/')[2];
   const [sortOption, setSortOption] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const filteredData = data.filter(item => item.category === path && item.title.toLowerCase().includes(searchQuery.toLowerCase()));
+
   const itemsPerPage = 8; 
-
-  const filteredData = data.filter(item => item.category === path);
-
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
@@ -37,23 +39,35 @@ const Category = ({ data }) => {
     <div className={styles.container}>
       <div className={styles.top}>
         <span className={styles.title}>{path}</span>
-        <select
-          name="Sort By"
-          id=""
-          className={styles.select}
-          value={sortOption}
-          onChange={handleSortChange}
-        >
-          <option className={styles.option} value="" disabled hidden>
-            Sort By
-          </option>
-          <option className={styles.option} value="Price Low To High">
-            Price Low To High
-          </option>
-          <option className={styles.option} value="Price High To Low">
-            Price High To Low
-          </option>
-        </select>
+        <div className={styles.action}>
+          <div className={styles.search}>
+            <input
+              className={styles.input}
+              type="text"
+              placeholder="Search by Title"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <SearchIcon fontSize="medium" />
+          </div>
+          <select
+            name="Sort By"
+            id=""
+            className={styles.select}
+            value={sortOption}
+            onChange={handleSortChange}
+          >
+            <option className={styles.option} value="" disabled hidden>
+              Sort By
+            </option>
+            <option className={styles.option} value="Price Low To High">
+              Price Low To High
+            </option>
+            <option className={styles.option} value="Price High To Low">
+              Price High To Low
+            </option>
+          </select>
+        </div>
       </div>
       <div className={styles.bottom}>
         <div className={styles.cardContainer}>

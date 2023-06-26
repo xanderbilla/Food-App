@@ -10,6 +10,33 @@
     border-bottom: 1px solid #d1421e49;
 }
 
+.action{
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.search{
+  margin: 10px 0;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16rem;
+  border-radius: 8px;
+  border: 1px solid #d1411e;
+}
+
+.input{
+  font-size: 18px;
+  width: 100%;
+  border: none
+}
+
+.input:focus{
+  outline: none;
+}
+
 .title{
     font-size: 42px;
     font-weight: 300;
@@ -81,7 +108,13 @@
         padding: 36px 18px;
     }
 
+    .action, .top{
+      justify-content: center;
+      gap: 0;
+      flex-direction: column;
+    }
+
   .select{
-    width: 150px;
+    width: 100%;
   }
 }

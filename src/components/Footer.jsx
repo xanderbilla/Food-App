@@ -7,13 +7,14 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import TelegramIcon from "@mui/icons-material/Telegram";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.wrapper}>
         <div className={styles.left}>
-          <img src="/img/logo.png" alt="" width="200" height="50" />
+          <LazyLoadImage src="/img/logo.png" alt="" width="200" height="50" />
           <div className={styles.container_social}>
             <div className={styles.container_social_icon}>
               <FacebookIcon />

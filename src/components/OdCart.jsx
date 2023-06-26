@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { removeProduct } from "../redux/cartRedux";
 import { getImage } from '../utils/getImage';
 import { useEffect, useState } from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const OdCart = ({ cart }) => {
   const dispatch = useDispatch();
@@ -47,7 +48,7 @@ const OdCart = ({ cart }) => {
         cart.products.map((product, index) =>
           <div className={styles.od_wrapper}>
             <div className={styles.prodImg}>
-              <img src={productImages[index]} alt="" className={styles.img} />
+              <LazyLoadImage src={productImages[index]} alt="" className={styles.img} />
             </div>
             <div className={styles.prodDetails}>
               <div className={styles.detail} key={index}>

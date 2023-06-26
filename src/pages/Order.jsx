@@ -2,6 +2,7 @@ import { useLocation } from "react-router-dom";
 import styles from "../styles/Order.module.css";
 import { useEffect, useState } from "react";
 import { API } from "aws-amplify";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Order = () => {
   const [data, setData] = useState([]);
@@ -74,7 +75,7 @@ const Order = () => {
         </div>
         <div className={styles.row}>
           <div className={statusClass(0)}>
-            <img src="/img/paid.png" width={30} height={30} alt="" />
+            <LazyLoadImage src="/img/paid.png" width={30} height={30} alt="" />
             <span>Pending</span>
             <div className={styles.checkedIcon}>
               <img
@@ -87,7 +88,7 @@ const Order = () => {
             </div>
           </div>
           <div className={statusClass(1)}>
-            <img src="/img/bake.png" width={30} height={30} alt="" />
+            <LazyLoadImage src="/img/bake.png" width={30} height={30} alt="" />
             <span>Preparing</span>
             <div className={styles.checkedIcon}>
               <img
@@ -100,7 +101,7 @@ const Order = () => {
             </div>
           </div>
           <div className={statusClass(2)}>
-            <img src="/img/bike.png" width={30} height={30} alt="" />
+            <LazyLoadImage src="/img/bike.png" width={30} height={30} alt="" />
             <span>On the way</span>
             <div className={styles.checkedIcon}>
               <img
@@ -113,7 +114,7 @@ const Order = () => {
             </div>
           </div>
           <div className={statusClass(3)}>
-            <img src="/img/delivered.png" width={30} height={30} alt="" />
+            <LazyLoadImage src="/img/delivered.png" width={30} height={30} alt="" />
             <span>Delivered</span>
             <div className={styles.checkedIcon}>
               <img

@@ -6,6 +6,7 @@ import DeliveryDiningOutlinedIcon from '@mui/icons-material/DeliveryDiningOutlin
 import { Link } from 'react-router-dom';
 import ManageAccountsOutlinedIcon from '@mui/icons-material/ManageAccountsOutlined';
 import { useSelector } from 'react-redux';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const ToggleMenu = ({ user }) => {
     const quantity = useSelector(state => state.cart.quantity)
@@ -13,20 +14,20 @@ const ToggleMenu = ({ user }) => {
     return (
         <div className={styles.container}>
             <Link to='/cart'><div className={`${styles.cart} ${user ? styles.hide : ''}`}>
-                <img src="/img/cart.png" alt="" width="30" height="30" />
+                <LazyLoadImage src="/img/cart.png" alt="" width="30" height="30" />
                 <div className={styles.counter}>{quantity}</div>
             </div></Link>
             <Link to='/menu'><div className={`${styles.cart}`}>
-                <RestaurantOutlinedIcon fontSize='large' style={{color:'white'}}/>
+                <RestaurantOutlinedIcon fontSize='large' style={{ color: 'white' }} />
             </div></Link>
             <Link to='/contact'><div className={`${styles.cart}`}>
-                <ContactSupportOutlinedIcon fontSize='large' style={{color:'white'}}/>
+                <ContactSupportOutlinedIcon fontSize='large' style={{ color: 'white' }} />
             </div></Link>
             <Link to='/order'><div className={`${styles.cart} ${user ? styles.hide : ''}`}>
-                <DeliveryDiningOutlinedIcon fontSize='large' style={{color:'white'}}/>
+                <DeliveryDiningOutlinedIcon fontSize='large' style={{ color: 'white' }} />
             </div></Link>
             <Link to='/admin/dashboard'><div className={`${styles.cart}`}>
-                <ManageAccountsOutlinedIcon fontSize='large' style={{color:'white'}}/>
+                <ManageAccountsOutlinedIcon fontSize='large' style={{ color: 'white' }} />
             </div></Link>
         </div>
     )

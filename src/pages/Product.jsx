@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 import { getImage } from "../utils/getImage";
 import { addProduct } from "../redux/cartRedux";
 import { useDispatch } from "react-redux";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Product = () => {
   const [size, setSize] = useState(0);
@@ -79,7 +80,7 @@ const Product = () => {
     <div className={styles.container}>
       <div className={styles.left}>
         <div className={styles.imgContainer}>
-          <img src={imageUrls} alt={data.title} className={styles.mainImg} />
+          <LazyLoadImage src={imageUrls} alt={data.title} className={styles.mainImg} />
         </div>
       </div>
       <div className={styles.right}>
@@ -91,11 +92,11 @@ const Product = () => {
           {data.size &&
             data.size.map((item, index) => (
               <div className={styles.size} key={index} onClick={() => setSize(index)}>
-                {data.category==='Snacks' && <img src="/img/snack_size.png" alt="" className={styles.img} />}
-                {data.category==='Beverage' && <img src="/img/dr_size.png" alt="" className={styles.img} />}
-                {data.category==='Meal' && <img src="/img/meal_size.png" alt="" className={styles.img} />}
-                {data.category==='Breakfast' && <img src="/img/bf_size.png" alt="" className={styles.img} />}
-                {data.category==='Pizza' && <img src="/img/size.png" alt="" className={styles.img} />}
+                {data.category==='Snacks' && <LazyLoadImage src="/img/snack_size.png" alt="" className={styles.img} />}
+                {data.category==='Beverage' && <LazyLoadImage src="/img/dr_size.png" alt="" className={styles.img} />}
+                {data.category==='Meal' && <LazyLoadImage src="/img/meal_size.png" alt="" className={styles.img} />}
+                {data.category==='Breakfast' && <LazyLoadImage src="/img/bf_size.png" alt="" className={styles.img} />}
+                {data.category==='Pizza' && <LazyLoadImage src="/img/size.png" alt="" className={styles.img} />}
                 <span className={styles.number}>{item}</span>
               </div>
             ))

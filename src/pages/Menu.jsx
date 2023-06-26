@@ -11,7 +11,7 @@ const Menu = ({ data, fetch }) => {
         <span className={styles.head}>Today's Menu List</span>
         <button onClick={fetch} className={styles.cache}><CachedIcon/></button>
       </div>
-      {categories.slice(0, 3).map(category => (
+      {categories.map(category => (
         <MenuList
           key={category}
           category={category}
