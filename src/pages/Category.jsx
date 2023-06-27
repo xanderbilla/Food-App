@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from '../styles/category.module.css';
 import PizzaCard from '../components/PizzaCard';
 import { useLocation } from 'react-router-dom';
@@ -9,26 +9,38 @@ const Category = ({ data }) => {
   const [sortOption, setSortOption] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
+  
+  const filteredData = data.filter(
+    item =>
+      item.category === path &&
+      item.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
-  const filteredData = data.filter(item => item.category === path && item.title.toLowerCase().includes(searchQuery.toLowerCase()));
+  const [sortedData, setSortedData] = useState([]);
 
-  const itemsPerPage = 8; 
+  useEffect(() => {
+    // Create a copy of the filteredData array and sort it based on the selected option
+    const sortedArray = [...filteredData];
+
+    if (sortOption === 'Price Low To High') {
+      sortedArray.sort((a, b) => a.price - b.price);
+    } else if (sortOption === 'Price High To Low') {
+      sortedArray.sort((a, b) => b.price - a.price);
+    }
+
+    setSortedData(sortedArray);
+  }, [sortOption, filteredData]);
+
+  const itemsPerPage = 8;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+  const currentItems = sortedData.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(sortedData.length / itemsPerPage);
 
   const handleSortChange = e => {
     const selectedOption = e.target.value;
     setSortOption(selectedOption);
-
-    if (selectedOption === 'Price Low To High') {
-      filteredData.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
-    } else if (selectedOption === 'Price High To Low') {
-      filteredData.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
-    }
-
-    setCurrentPage(1); 
+    setCurrentPage(1);
   };
 
   const handlePageChange = pageNumber => {
@@ -46,7 +58,7 @@ const Category = ({ data }) => {
               type="text"
               placeholder="Search by Title"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={e => setSearchQuery(e.target.value)}
             />
             <SearchIcon fontSize="medium" />
           </div>
