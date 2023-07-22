@@ -8,7 +8,7 @@ const Track = () => {
   const [phone, setPhone] = useState('')
   const [data, setData] = useState([])
 
-  const apiName = 'foodAppApi';
+  const apiName = 'FoodAppAPI';
   const path = '/client/orders';
 
   const fetchData = async () => {
@@ -31,12 +31,12 @@ const Track = () => {
   };
 
   const handleCancel = async (orderId) => {
-    const apiName = 'foodAppApi';
+    const apiName = 'FoodAppAPI';
     const path = `/client/orders/${orderId}`;
 
     try {
       await API.del(apiName, path);
-      fetchData(); 
+      fetchData();
     } catch (error) {
       console.log(error.response);
     }

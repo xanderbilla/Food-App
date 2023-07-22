@@ -1,0 +1,16 @@
+{
+  "resourceName": "foodAppMedia",
+  "policyUUID": "40234e3f",
+  "bucketName": "foodappmediaadmin",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

@@ -49,7 +49,7 @@ const NewProd = ({ isClick, setIsClick, onSubmit }) => {
             console.log('Error uploading file:', error);
         }
 
-        const apiName = 'foodAppApi';
+        const apiName = 'FoodAppAPI';
         const path = '/admin/products';
         const myInit = {
             body: {
@@ -65,14 +65,14 @@ const NewProd = ({ isClick, setIsClick, onSubmit }) => {
         };
 
         API.post(apiName, path, myInit)
-      .then((response) => {
-        console.log(myInit.body);
-        setIsClick(!isClick);
-        onSubmit();
-      })
-      .catch((error) => {
-        console.log(error.response);
-      });
+            .then((response) => {
+                console.log(myInit.body);
+                setIsClick(!isClick);
+                onSubmit();
+            })
+            .catch((error) => {
+                console.log(error.response);
+            });
 
         setTitle('')
         setPrices([])

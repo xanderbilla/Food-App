@@ -34,7 +34,7 @@ function App() {
     }
   };
 
-  const apiName = 'foodAppApi';
+  const apiName = 'FoodAppAPI';
   const path = '/client/products';
 
   const fetchData = async () => {
@@ -77,8 +77,8 @@ function App() {
             <Route path='/order/:id' element={<Order />} />
             <Route path='/product/:id' element={<Product />} />
             <Route path='/cart' element={<Cart />} />
-            <Route path='/menu' element={<Menu data={data} fetch={fetchData}/>} />
-            <Route path='/menu/:category' element={<Category data={data} fetch={fetchData}/>} />
+            <Route path='/menu' element={<Menu data={data} fetch={fetchData} />} />
+            <Route path='/menu/:category' element={<Category data={data} fetch={fetchData} />} />
             {isLogin ? (
               <>
                 <Route path="/admin" element={<Dashboard />} />

@@ -19,7 +19,7 @@ const Dashboard = () => {
     setIsClick(!isClick);
   };
 
-  const apiName = 'foodAppApi';
+  const apiName = 'FoodAppAPI';
 
   const fetchProdData = async () => {
     try {

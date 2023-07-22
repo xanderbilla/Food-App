@@ -16,7 +16,7 @@ const Product = () => {
   const [selectedExtras, setSelectedExtras] = useState([]);
   const dispatch = useDispatch();
 
-  const apiName = 'foodAppApi';
+  const apiName = 'FoodAppAPI';
   const path = `/client/products/${loc}`;
 
   useEffect(() => {
@@ -92,11 +92,11 @@ const Product = () => {
           {data.size &&
             data.size.map((item, index) => (
               <div className={styles.size} key={index} onClick={() => setSize(index)}>
-                {data.category==='Snacks' && <LazyLoadImage src="/img/snack_size.png" alt="" className={styles.img} />}
-                {data.category==='Beverage' && <LazyLoadImage src="/img/dr_size.png" alt="" className={styles.img} />}
-                {data.category==='Meal' && <LazyLoadImage src="/img/meal_size.png" alt="" className={styles.img} />}
-                {data.category==='Breakfast' && <LazyLoadImage src="/img/bf_size.png" alt="" className={styles.img} />}
-                {data.category==='Pizza' && <LazyLoadImage src="/img/size.png" alt="" className={styles.img} />}
+                {data.category === 'Snacks' && <LazyLoadImage src="/img/snack_size.png" alt="" className={styles.img} />}
+                {data.category === 'Beverage' && <LazyLoadImage src="/img/dr_size.png" alt="" className={styles.img} />}
+                {data.category === 'Meal' && <LazyLoadImage src="/img/meal_size.png" alt="" className={styles.img} />}
+                {data.category === 'Breakfast' && <LazyLoadImage src="/img/bf_size.png" alt="" className={styles.img} />}
+                {data.category === 'Pizza' && <LazyLoadImage src="/img/size.png" alt="" className={styles.img} />}
                 <span className={styles.number}>{item}</span>
               </div>
             ))

@@ -5,7 +5,7 @@ import SearchIcon from '@mui/icons-material/Search';
 
 const OrderList = ({ data }) => {
   console.log(data);
-  const apiName = "foodAppApi";
+  const apiName = "FoodAppAPI";
   const [orderData, setOrderData] = useState(data);
   const [selectedProductIds, setSelectedProductIds] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -141,7 +141,7 @@ const OrderList = ({ data }) => {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <SearchIcon fontSize="medium"/>
+        <SearchIcon fontSize="medium" />
       </div>
       <div className={styles.tableContainer}>
         <table className={styles.table}>
@@ -165,11 +165,10 @@ const OrderList = ({ data }) => {
                   {order.product.products.map((product) => (
                     <p
                       key={product.id}
-                      className={`${styles.productName} ${
-                        isProductSelected(order.orderId, product.id)
+                      className={`${styles.productName} ${isProductSelected(order.orderId, product.id)
                           ? styles.selectedProduct
                           : ""
-                      }`}
+                        }`}
                       onClick={() =>
                         handleProductClick(order.orderId, product.id)
                       }

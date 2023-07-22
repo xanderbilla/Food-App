@@ -18,9 +18,9 @@ const NewProd = ({ item, click, setClick, fetch }) => {
   const [isSize, setIsSize] = useState('no');
   const [updateStatus, setUpdateStatus] = useState('');
 
-  const apiName = 'foodAppApi';
+  const apiName = 'FoodAppAPI';
   const path = `/admin/products/${item}`;
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -67,9 +67,9 @@ const NewProd = ({ item, click, setClick, fetch }) => {
     } catch (error) {
       console.log('Error uploading file:', error);
     }
-  
 
-    const apiName = 'foodAppApi';
+
+    const apiName = 'FoodAppAPI';
     const myInit = {
       body: {
         title: title || data.title,
@@ -107,171 +107,171 @@ const NewProd = ({ item, click, setClick, fetch }) => {
   return (
     <div className={styles.container}>
       {updateStatus && <p className={styles.error}>{updateStatus}</p>}
-            <form action="" className={styles.form} onSubmit={handleSubmit}>
-                <div className={styles.column}>
-                    <div className={styles.inputArea}>
-                        <input
-                            className={styles.input}
-                            type="text"
-                            name="Title"
-                            placeholder={data.title}
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
-                        />
-                    </div>
-                    <div className={styles.inputArea}>
-                        <textarea
-                            className={styles.input}
-                            name="description"
-                            placeholder={data.desc}
-                            value={desc}
-                            onChange={(e) => setDesc(e.target.value)}
-                        ></textarea>
-                    </div>
-                    <div className={styles.inputArea}>
-                        <input
-                            className={styles.input}
-                            type="text"
-                            name="price"
-                            placeholder="Price - Press Tab To Enter More"
-                            value={priceInput}
-                            onChange={(e) => setPriceInput(e.target.value)}
-                            onKeyDown={handlePriceInput}
-                        />
-                        <ul className={styles.extras}>
-                            {prices.map((price, index) => (
-                                <li key={index} className={styles.extra}>{price}</li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div className={styles.inputArea}>
-                        <select
-                            className={styles.input}
-                            name="category"
-                            value={category}
-                            onChange={(e) => setCategory(e.target.value)}
-                        >
-                            <option value="" disabled>
-                                Select Category
-                            </option>
-                            <option value="Snacks">Snacks</option>
-                            <option value="Beverage">Beverage</option>
-                            <option value="Meal">Meal</option>
-                            <option value="Breakfast">Breakfast</option>
-                            <option value="Pizza">Pizza</option>
-                        </select>
-                    </div>
-                </div>
-                <div className={styles.column}>
-                    <div className={styles.inputArea}>
-                        <input
-                            className={styles.input}
-                            type="file"
-                            accept="image/*"
-                            onChange={(e) => setImage(e.target.files[0])}
-                        />
-                    </div>
-                    <div className={styles.inputRadio}>
-                        <label htmlFor="isNew">Is New</label>
-                        <div className={styles.radioBtn}>
-                            <input
-                                className={styles.radio}
-                                type="radio"
-                                id="isNewYes"
-                                name="isNew"
-                                value="yes"
-                                checked={isNew === 'yes'}
-                                onChange={(e) => setIsNew(e.target.value)}
-                            />
-                            <label htmlFor="isNewYes">Yes</label>
-                        </div>
-                        <div className={styles.radioBtn}>
-                            <input
-                                className={styles.radio}
-                                type="radio"
-                                id="isNewNo"
-                                name="isNew"
-                                value="no"
-                                checked={isNew === 'no'}
-                                onChange={(e) => setIsNew(e.target.value)}
-                            />
-                            <label htmlFor="isNewNo">No</label>
-                        </div>
-                    </div>
-                    <div className={styles.inputArea}>
-                        <input
-                            className={styles.input}
-                            type="text"
-                            name="extras"
-                            placeholder="Extras - Press Tab To Enter More"
-                            value={extrasInput}
-                            onChange={(e) => setExtrasInput(e.target.value)}
-                            onKeyDown={handleExtrasInput}
-                        />
-                        <ul className={styles.extras}>
-                            {extras.map((extra, index) => (
-                                <li key={index} className={styles.extra}>{extra}</li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div className={isSize === 'no' ? `${styles.inputArea}` : `${styles.inputArea} ${styles.hide}`}>
-                        <label htmlFor="size">Want to add size?</label>
-                        <div className={styles.radioBtn}>
-                            <input
-                                className={styles.radio}
-                                type="radio"
-                                id="size"
-                                name="size"
-                                value="yes"
-                                checked={isSize === 'yes'}
-                                onChange={(e) => setIsSize(e.target.value)}
-                            />
-                            <label htmlFor="size">Yes</label>
-                        </div>
-                        <div className={styles.radioBtn}>
-                            <input
-                                className={styles.radio}
-                                type="radio"
-                                id="sizeNo"
-                                name="size"
-                                value="no"
-                                checked={isSize === 'no'}
-                                onChange={(e) => setIsSize(e.target.value)}
-                            />
-                            <label htmlFor="sizeNo">No</label>
-                        </div>
-                    </div>
-                    {
-                        isSize === 'yes' &&
-                        <div className={styles.inputArea}>
-                            <input
-                                className={styles.input}
-                                type="text"
-                                name="size"
-                                placeholder="Size - Press Tab To Enter More"
-                                value={sizeInput}
-                                onChange={(e) => setSizeInput(e.target.value)}
-                                onKeyDown={handleSizeInput}
-                            />
-                            <ul className={styles.extras}>
-                                {size.map((size, index) => (
-                                    <li key={index} className={styles.extra}>{size}</li>
-                                ))}
-                            </ul>
-                        </div>
-                    }
-                    <div className={styles.action}>
-                        <button type="submit" className={styles.button}>
-                            Update Product
-                        </button>
-                        <button className={styles.button} onClick={() => setClick(!click)}>
-                            Cancel
-                        </button>
-                    </div>
-                </div>
-            </form>
+      <form action="" className={styles.form} onSubmit={handleSubmit}>
+        <div className={styles.column}>
+          <div className={styles.inputArea}>
+            <input
+              className={styles.input}
+              type="text"
+              name="Title"
+              placeholder={data.title}
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </div>
+          <div className={styles.inputArea}>
+            <textarea
+              className={styles.input}
+              name="description"
+              placeholder={data.desc}
+              value={desc}
+              onChange={(e) => setDesc(e.target.value)}
+            ></textarea>
+          </div>
+          <div className={styles.inputArea}>
+            <input
+              className={styles.input}
+              type="text"
+              name="price"
+              placeholder="Price - Press Tab To Enter More"
+              value={priceInput}
+              onChange={(e) => setPriceInput(e.target.value)}
+              onKeyDown={handlePriceInput}
+            />
+            <ul className={styles.extras}>
+              {prices.map((price, index) => (
+                <li key={index} className={styles.extra}>{price}</li>
+              ))}
+            </ul>
+          </div>
+          <div className={styles.inputArea}>
+            <select
+              className={styles.input}
+              name="category"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <option value="" disabled>
+                Select Category
+              </option>
+              <option value="Snacks">Snacks</option>
+              <option value="Beverage">Beverage</option>
+              <option value="Meal">Meal</option>
+              <option value="Breakfast">Breakfast</option>
+              <option value="Pizza">Pizza</option>
+            </select>
+          </div>
         </div>
-    );
+        <div className={styles.column}>
+          <div className={styles.inputArea}>
+            <input
+              className={styles.input}
+              type="file"
+              accept="image/*"
+              onChange={(e) => setImage(e.target.files[0])}
+            />
+          </div>
+          <div className={styles.inputRadio}>
+            <label htmlFor="isNew">Is New</label>
+            <div className={styles.radioBtn}>
+              <input
+                className={styles.radio}
+                type="radio"
+                id="isNewYes"
+                name="isNew"
+                value="yes"
+                checked={isNew === 'yes'}
+                onChange={(e) => setIsNew(e.target.value)}
+              />
+              <label htmlFor="isNewYes">Yes</label>
+            </div>
+            <div className={styles.radioBtn}>
+              <input
+                className={styles.radio}
+                type="radio"
+                id="isNewNo"
+                name="isNew"
+                value="no"
+                checked={isNew === 'no'}
+                onChange={(e) => setIsNew(e.target.value)}
+              />
+              <label htmlFor="isNewNo">No</label>
+            </div>
+          </div>
+          <div className={styles.inputArea}>
+            <input
+              className={styles.input}
+              type="text"
+              name="extras"
+              placeholder="Extras - Press Tab To Enter More"
+              value={extrasInput}
+              onChange={(e) => setExtrasInput(e.target.value)}
+              onKeyDown={handleExtrasInput}
+            />
+            <ul className={styles.extras}>
+              {extras.map((extra, index) => (
+                <li key={index} className={styles.extra}>{extra}</li>
+              ))}
+            </ul>
+          </div>
+          <div className={isSize === 'no' ? `${styles.inputArea}` : `${styles.inputArea} ${styles.hide}`}>
+            <label htmlFor="size">Want to add size?</label>
+            <div className={styles.radioBtn}>
+              <input
+                className={styles.radio}
+                type="radio"
+                id="size"
+                name="size"
+                value="yes"
+                checked={isSize === 'yes'}
+                onChange={(e) => setIsSize(e.target.value)}
+              />
+              <label htmlFor="size">Yes</label>
+            </div>
+            <div className={styles.radioBtn}>
+              <input
+                className={styles.radio}
+                type="radio"
+                id="sizeNo"
+                name="size"
+                value="no"
+                checked={isSize === 'no'}
+                onChange={(e) => setIsSize(e.target.value)}
+              />
+              <label htmlFor="sizeNo">No</label>
+            </div>
+          </div>
+          {
+            isSize === 'yes' &&
+            <div className={styles.inputArea}>
+              <input
+                className={styles.input}
+                type="text"
+                name="size"
+                placeholder="Size - Press Tab To Enter More"
+                value={sizeInput}
+                onChange={(e) => setSizeInput(e.target.value)}
+                onKeyDown={handleSizeInput}
+              />
+              <ul className={styles.extras}>
+                {size.map((size, index) => (
+                  <li key={index} className={styles.extra}>{size}</li>
+                ))}
+              </ul>
+            </div>
+          }
+          <div className={styles.action}>
+            <button type="submit" className={styles.button}>
+              Update Product
+            </button>
+            <button className={styles.button} onClick={() => setClick(!click)}>
+              Cancel
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  );
 };
 
 export default NewProd;

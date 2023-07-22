@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "storage": {
+      "foodAppTables": [
+        "read"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

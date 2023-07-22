@@ -9,7 +9,7 @@ const Order = () => {
   const location = useLocation().pathname.split("/")[2];
   console.log(location);
 
-  const apiName = "foodAppApi";
+  const apiName = "FoodAppAPI";
   const path = `/client/orders/${location}`;
 
   useEffect(() => {

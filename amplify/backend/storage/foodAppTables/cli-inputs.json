@@ -1,0 +1,18 @@
+{
+  "resourceName": "foodAppTables",
+  "tableName": "foodAppProdDB",
+  "partitionKey": {
+    "fieldName": "prodId",
+    "fieldType": "string"
+  },
+  "gsi": [
+    {
+      "name": "category",
+      "partitionKey": {
+        "fieldName": "category",
+        "fieldType": "string"
+      }
+    }
+  ],
+  "triggerFunctions": []
+}

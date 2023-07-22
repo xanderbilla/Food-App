@@ -1,10 +1,18 @@
 {
-  "resourceName": "FoodAppOrdersDB",
-  "tableName": "FoodAppOrdersDB",
+  "resourceName": "foodAppOrdersDB",
+  "tableName": "foodAppOrdersDB",
   "partitionKey": {
     "fieldName": "orderId",
     "fieldType": "string"
   },
-  "gsi": [],
+  "gsi": [
+    {
+      "name": "phone",
+      "partitionKey": {
+        "fieldName": "phone",
+        "fieldType": "number"
+      }
+    }
+  ],
   "triggerFunctions": []
 }
