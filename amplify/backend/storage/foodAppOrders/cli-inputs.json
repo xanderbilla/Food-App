@@ -1,0 +1,10 @@
+{
+  "resourceName": "foodAppOrders",
+  "tableName": "foodAppOrdersDB",
+  "partitionKey": {
+    "fieldName": "orderId",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

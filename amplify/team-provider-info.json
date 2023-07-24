@@ -16,7 +16,30 @@
         "foodapp1e6247ba": {}
       },
       "storage": {
-        "foodappstorage": {}
+        "foodappstorage": {},
+        "foodAppOrders": {},
+        "foodAppProd": {}
+      },
+      "function": {
+        "foodAppAdminProd": {
+          "deploymentBucketName": "amplify-foodapp-dev-43918-deployment",
+          "s3Key": "amplify-builds/foodAppAdminProd-3263474c4e3230354244-build.zip"
+        },
+        "foodAppAdminOrders": {
+          "deploymentBucketName": "amplify-foodapp-dev-43918-deployment",
+          "s3Key": "amplify-builds/foodAppAdminOrders-73416d5939574d4e4f37-build.zip"
+        },
+        "foodAppclientProd": {
+          "deploymentBucketName": "amplify-foodapp-dev-43918-deployment",
+          "s3Key": "amplify-builds/foodAppclientProd-536c715a395a47574c37-build.zip"
+        },
+        "foodAppClientOrders": {
+          "deploymentBucketName": "amplify-foodapp-dev-43918-deployment",
+          "s3Key": "amplify-builds/foodAppClientOrders-5955626757476a684278-build.zip"
+        }
+      },
+      "api": {
+        "foodAppAPI": {}
       }
     }
   }

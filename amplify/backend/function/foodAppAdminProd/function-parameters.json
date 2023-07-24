@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "storage": {
+      "foodAppProd": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

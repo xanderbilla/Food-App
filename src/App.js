@@ -34,7 +34,7 @@ function App() {
     }
   };
 
-  const apiName = 'FoodAppAPI';
+  const apiName = 'foodAppAPI';
   const path = '/client/products';
 
   const fetchData = async () => {

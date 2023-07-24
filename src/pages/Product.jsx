@@ -16,7 +16,7 @@ const Product = () => {
   const [selectedExtras, setSelectedExtras] = useState([]);
   const dispatch = useDispatch();
 
-  const apiName = 'FoodAppAPI';
+  const apiName = 'foodAppAPI';
   const path = `/client/products/${loc}`;
 
   useEffect(() => {

@@ -76,7 +76,7 @@ const CartSummary = () => {
     setErrorMessage('');
 
     if (paymentMethod === 'cash') {
-      const apiName = 'FoodAppAPI';
+      const apiName = 'foodAppAPI';
       const path = '/client/orders';
       const myInit = {
         body: {
@@ -98,7 +98,7 @@ const CartSummary = () => {
         console.log(error.response);
       }
     } else if (paymentMethod === 'card') {
-      const apiName = 'FoodAppAPI';
+      const apiName = 'foodAppAPI';
       const path = '/client/orders';
       const amount = cart.total;
       try {

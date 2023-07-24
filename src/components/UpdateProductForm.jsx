@@ -18,7 +18,7 @@ const NewProd = ({ item, click, setClick, fetch }) => {
   const [isSize, setIsSize] = useState('no');
   const [updateStatus, setUpdateStatus] = useState('');
 
-  const apiName = 'FoodAppAPI';
+  const apiName = 'foodAppAPI';
   const path = `/admin/products/${item}`;
 
   useEffect(() => {
@@ -69,7 +69,7 @@ const NewProd = ({ item, click, setClick, fetch }) => {
     }
 
 
-    const apiName = 'FoodAppAPI';
+    const apiName = 'foodAppAPI';
     const myInit = {
       body: {
         title: title || data.title,

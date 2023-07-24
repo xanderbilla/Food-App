@@ -1,4 +1,44 @@
 {
+  "api": {
+    "foodAppAPI": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "foodAppAdminProd"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "foodAppAdminOrders"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "foodAppclientProd"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "foodAppClientOrders"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
   "auth": {
     "foodapp1e6247ba": {
       "customAuth": false,
@@ -25,7 +65,147 @@
       "service": "Cognito"
     }
   },
+  "function": {
+    "foodAppAdminOrders": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "foodAppOrders"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "foodAppAdminProd": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "foodAppProd"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "foodAppClientOrders": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "foodAppOrders"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "foodAppclientProd": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "foodAppProd"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_foodAppAdminOrders_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "foodAppAdminOrders"
+        }
+      ]
+    },
+    "AMPLIFY_function_foodAppAdminOrders_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "foodAppAdminOrders"
+        }
+      ]
+    },
+    "AMPLIFY_function_foodAppAdminProd_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "foodAppAdminProd"
+        }
+      ]
+    },
+    "AMPLIFY_function_foodAppAdminProd_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "foodAppAdminProd"
+        }
+      ]
+    },
+    "AMPLIFY_function_foodAppClientOrders_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "foodAppClientOrders"
+        }
+      ]
+    },
+    "AMPLIFY_function_foodAppClientOrders_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "foodAppClientOrders"
+        }
+      ]
+    },
+    "AMPLIFY_function_foodAppclientProd_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "foodAppclientProd"
+        }
+      ]
+    },
+    "AMPLIFY_function_foodAppclientProd_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "foodAppclientProd"
+        }
+      ]
+    }
+  },
   "storage": {
+    "foodAppOrders": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "foodAppProd": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
     "foodappstorage": {
       "dependsOn": [],
       "providerPlugin": "awscloudformation",

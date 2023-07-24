@@ -5,7 +5,7 @@ import SearchIcon from '@mui/icons-material/Search';
 
 const OrderList = ({ data }) => {
   console.log(data);
-  const apiName = "FoodAppAPI";
+  const apiName = "foodAppAPI";
   const [orderData, setOrderData] = useState(data);
   const [selectedProductIds, setSelectedProductIds] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -166,8 +166,8 @@ const OrderList = ({ data }) => {
                     <p
                       key={product.id}
                       className={`${styles.productName} ${isProductSelected(order.orderId, product.id)
-                          ? styles.selectedProduct
-                          : ""
+                        ? styles.selectedProduct
+                        : ""
                         }`}
                       onClick={() =>
                         handleProductClick(order.orderId, product.id)

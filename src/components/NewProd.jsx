@@ -49,7 +49,7 @@ const NewProd = ({ isClick, setIsClick, onSubmit }) => {
             console.log('Error uploading file:', error);
         }
 
-        const apiName = 'FoodAppAPI';
+        const apiName = 'foodAppAPI';
         const path = '/admin/products';
         const myInit = {
             body: {
