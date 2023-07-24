@@ -1,45 +1,22 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-foodapp-dev-134456-authRole",
-      "UnauthRoleArn": "arn:aws:iam::276698442414:role/amplify-foodapp-dev-134456-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::276698442414:role/amplify-foodapp-dev-134456-authRole",
+      "AuthRoleName": "amplify-foodapp-dev-43918-authRole",
+      "UnauthRoleArn": "arn:aws:iam::276698442414:role/amplify-foodapp-dev-43918-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::276698442414:role/amplify-foodapp-dev-43918-authRole",
       "Region": "ap-south-1",
-      "DeploymentBucketName": "amplify-foodapp-dev-134456-deployment",
-      "UnauthRoleName": "amplify-foodapp-dev-134456-unauthRole",
-      "StackName": "amplify-foodapp-dev-134456",
-      "StackId": "arn:aws:cloudformation:ap-south-1:276698442414:stack/amplify-foodapp-dev-134456/d9c5b760-2867-11ee-af29-06b3303e2d14",
-      "AmplifyAppId": "d1b0ovflksjzsx"
+      "DeploymentBucketName": "amplify-foodapp-dev-43918-deployment",
+      "UnauthRoleName": "amplify-foodapp-dev-43918-unauthRole",
+      "StackName": "amplify-foodapp-dev-43918",
+      "StackId": "arn:aws:cloudformation:ap-south-1:276698442414:stack/amplify-foodapp-dev-43918/f57af0a0-29ad-11ee-912d-0acd2a68c53e",
+      "AmplifyAppId": "d2aiu7mcy2w1hx"
     },
     "categories": {
       "auth": {
-        "foodappb446fed8": {}
+        "foodapp1e6247ba": {}
       },
       "storage": {
-        "foodAppMedia": {},
-        "foodAppTables": {},
-        "foodAppOrdersDB": {}
-      },
-      "function": {
-        "foodAppAdminProd": {
-          "deploymentBucketName": "amplify-foodapp-dev-134456-deployment",
-          "s3Key": "amplify-builds/foodAppAdminProd-565271526e48354a4f2f-build.zip"
-        },
-        "foodAppAdminOrders": {
-          "deploymentBucketName": "amplify-foodapp-dev-134456-deployment",
-          "s3Key": "amplify-builds/foodAppAdminOrders-754f504e3144356e4476-build.zip"
-        },
-        "foodAppClientProd": {
-          "deploymentBucketName": "amplify-foodapp-dev-134456-deployment",
-          "s3Key": "amplify-builds/foodAppClientProd-4373366232656c335267-build.zip"
-        },
-        "foodAppClientOrders": {
-          "deploymentBucketName": "amplify-foodapp-dev-134456-deployment",
-          "s3Key": "amplify-builds/foodAppClientOrders-675767436d65454e6166-build.zip"
-        }
-      },
-      "api": {
-        "FoodAppAPI": {}
+        "foodappstorage": {}
       }
     }
   }

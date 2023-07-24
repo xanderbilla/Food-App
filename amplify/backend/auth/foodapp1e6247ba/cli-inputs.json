@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "foodappb446fed8_identitypool_b446fed8",
+    "identityPoolName": "foodapp1e6247ba_identitypool_1e6247ba",
     "allowUnauthenticatedIdentities": true,
-    "resourceNameTruncated": "foodapb446fed8",
-    "userPoolName": "foodappb446fed8_userpool_b446fed8",
+    "resourceNameTruncated": "foodap1e6247ba",
+    "userPoolName": "foodapp1e6247ba_userpool_1e6247ba",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -31,10 +31,10 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "foodapb446fed8_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "foodap1e6247ba_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "b446fed8",
-    "resourceName": "foodappb446fed8",
+    "sharedId": "1e6247ba",
+    "resourceName": "foodapp1e6247ba",
     "authSelections": "identityPoolAndUserPool",
     "useDefault": "default",
     "userPoolGroupList": [],
