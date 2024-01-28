@@ -14,6 +14,7 @@ import { API, Auth } from 'aws-amplify';
 import { useEffect, useState } from 'react';
 import Contact from './pages/Contact';
 import Cart from './pages/cart';
+import Test from './pages/Test';
 
 function App() {
   const [data, setData] = useState([]);
@@ -74,6 +75,7 @@ function App() {
             <Route path='/' element={<Home data={data} />} />
             <Route path='/order' element={<Track />} />
             <Route path='/contact' element={<Contact />} />
+            {/* <Route path='/test' element={<Test />} /> */}
             <Route path='/order/:id' element={<Order />} />
             <Route path='/product/:id' element={<Product />} />
             <Route path='/cart' element={<Cart />} />

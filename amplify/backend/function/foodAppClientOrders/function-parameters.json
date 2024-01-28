@@ -1,7 +1,7 @@
 {
   "permissions": {
     "storage": {
-      "foodAppOrders": [
+      "foodAppOrdersDB": [
         "create",
         "read",
         "update",

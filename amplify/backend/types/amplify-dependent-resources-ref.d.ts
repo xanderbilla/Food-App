@@ -7,7 +7,7 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "auth": {
-    "foodapp1e6247ba": {
+    "foodappf1fa695a": {
       "AppClientID": "string",
       "AppClientIDWeb": "string",
       "IdentityPoolId": "string",
@@ -48,7 +48,17 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "storage": {
-    "foodAppOrders": {
+    "foodAppOrdersDB": {
+      "Arn": "string",
+      "Name": "string",
+      "PartitionKeyName": "string",
+      "PartitionKeyType": "string",
+      "Region": "string",
+      "SortKeyName": "string",
+      "SortKeyType": "string",
+      "StreamArn": "string"
+    },
+    "foodAppProdDB": {
       "Arn": "string",
       "Name": "string",
       "PartitionKeyName": "string",
@@ -56,15 +66,7 @@ export type AmplifyDependentResourcesAttributes = {
       "Region": "string",
       "StreamArn": "string"
     },
-    "foodAppProd": {
-      "Arn": "string",
-      "Name": "string",
-      "PartitionKeyName": "string",
-      "PartitionKeyType": "string",
-      "Region": "string",
-      "StreamArn": "string"
-    },
-    "foodappstorage": {
+    "foodAppStorage": {
       "BucketName": "string",
       "Region": "string"
     }

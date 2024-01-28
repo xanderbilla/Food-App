@@ -1,7 +1,7 @@
 {
-  "resourceName": "foodappstorage",
-  "policyUUID": "0ce87d29",
-  "bucketName": "foodappmedia",
+  "resourceName": "foodAppStorage",
+  "policyUUID": "b06ca29e",
+  "bucketName": "foodapps3storage",
   "storageAccess": "authAndGuest",
   "guestAccess": [
     "READ"

@@ -1,16 +1,16 @@
 {
   "version": 1,
   "paths": {
-    "/admin/products": {
-      "name": "/admin/products",
-      "lambdaFunction": "foodAppAdminProd",
+    "/admin/orders": {
+      "name": "/admin/orders",
+      "lambdaFunction": "foodAppAdminOrders",
       "permissions": {
         "setting": "open"
       }
     },
-    "/admin/orders": {
-      "name": "/admin/orders",
-      "lambdaFunction": "foodAppAdminOrders",
+    "/admin/products": {
+      "name": "/admin/products",
+      "lambdaFunction": "foodAppAdminProd",
       "permissions": {
         "setting": "open"
       }

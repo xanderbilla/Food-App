@@ -10,9 +10,9 @@ See the License for the specific language governing permissions and limitations 
 /* Amplify Params - DO NOT EDIT
 	ENV
 	REGION
-	STORAGE_FOODAPPORDERS_ARN
-	STORAGE_FOODAPPORDERS_NAME
-	STORAGE_FOODAPPORDERS_STREAMARN
+	STORAGE_FOODAPPORDERSDB_ARN
+	STORAGE_FOODAPPORDERSDB_NAME
+	STORAGE_FOODAPPORDERSDB_STREAMARN
 Amplify Params - DO NOT EDIT */
 
 const express = require('express')
@@ -33,7 +33,7 @@ app.use(function(req, res, next) {
 
 const AWS = require('aws-sdk');
 const dynamodb = new AWS.DynamoDB.DocumentClient();
-const table = process.env.STORAGE_FOODAPPORDERS_NAME
+const table = process.env.STORAGE_FOODAPPORDERSDB_NAME
 
 async function getOrder(orderId) {
   const params = {

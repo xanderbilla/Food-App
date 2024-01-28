@@ -8,7 +8,7 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "foodAppAdminProd"
+          "resourceName": "foodAppAdminOrders"
         },
         {
           "attributes": [
@@ -16,7 +16,7 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "foodAppAdminOrders"
+          "resourceName": "foodAppAdminProd"
         },
         {
           "attributes": [
@@ -40,7 +40,7 @@
     }
   },
   "auth": {
-    "foodapp1e6247ba": {
+    "foodappf1fa695a": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -76,7 +76,7 @@
             "StreamArn"
           ],
           "category": "storage",
-          "resourceName": "foodAppOrders"
+          "resourceName": "foodAppOrdersDB"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -92,7 +92,7 @@
             "StreamArn"
           ],
           "category": "storage",
-          "resourceName": "foodAppProd"
+          "resourceName": "foodAppProdDB"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -108,7 +108,7 @@
             "StreamArn"
           ],
           "category": "storage",
-          "resourceName": "foodAppOrders"
+          "resourceName": "foodAppOrdersDB"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -124,7 +124,7 @@
             "StreamArn"
           ],
           "category": "storage",
-          "resourceName": "foodAppProd"
+          "resourceName": "foodAppProdDB"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -198,15 +198,15 @@
     }
   },
   "storage": {
-    "foodAppOrders": {
+    "foodAppOrdersDB": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
     },
-    "foodAppProd": {
+    "foodAppProdDB": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
     },
-    "foodappstorage": {
+    "foodAppStorage": {
       "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "S3"

@@ -1,5 +1,5 @@
 {
-  "resourceName": "foodAppProd",
+  "resourceName": "foodAppProdDB",
   "tableName": "foodAppProdDB",
   "partitionKey": {
     "fieldName": "prodId",

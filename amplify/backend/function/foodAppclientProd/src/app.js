@@ -10,9 +10,9 @@ See the License for the specific language governing permissions and limitations 
 /* Amplify Params - DO NOT EDIT
 	ENV
 	REGION
-	STORAGE_FOODAPPPROD_ARN
-	STORAGE_FOODAPPPROD_NAME
-	STORAGE_FOODAPPPROD_STREAMARN
+	STORAGE_FOODAPPPRODDB_ARN
+	STORAGE_FOODAPPPRODDB_NAME
+	STORAGE_FOODAPPPRODDB_STREAMARN
 Amplify Params - DO NOT EDIT */
 
 const express = require('express')
@@ -36,7 +36,7 @@ const dynamodb = new AWS.DynamoDB.DocumentClient();
 
 async function getProduct(prodId) {
   const params = {
-    TableName: process.env.STORAGE_FOODAPPPROD_NAME,
+    TableName: process.env.STORAGE_FOODAPPPRODDB_NAME,
     Key: {
       prodId
     }
@@ -57,7 +57,7 @@ async function getProduct(prodId) {
 
 async function getAllItems(category) {
     const params = {
-      TableName: process.env.STORAGE_FOODAPPPROD_NAME
+      TableName: process.env.STORAGE_FOODAPPPRODDB_NAME
     };
   
     if (category) {

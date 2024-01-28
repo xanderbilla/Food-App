@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "{\"createdOn\":\"Windows\",\"createdBy\":\"Amplify\",\"createdWith\":\"12.1.1\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
+  "Description": "{\"createdOn\":\"Windows\",\"createdBy\":\"Amplify\",\"createdWith\":\"12.10.1\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
   "Parameters": {
     "CloudWatchRule": {
       "Type": "String",
@@ -16,17 +16,17 @@
     "s3Key": {
       "Type": "String"
     },
-    "storagefoodAppOrdersName": {
+    "storagefoodAppOrdersDBName": {
       "Type": "String",
-      "Default": "storagefoodAppOrdersName"
+      "Default": "storagefoodAppOrdersDBName"
     },
-    "storagefoodAppOrdersArn": {
+    "storagefoodAppOrdersDBArn": {
       "Type": "String",
-      "Default": "storagefoodAppOrdersArn"
+      "Default": "storagefoodAppOrdersDBArn"
     },
-    "storagefoodAppOrdersStreamArn": {
+    "storagefoodAppOrdersDBStreamArn": {
       "Type": "String",
-      "Default": "storagefoodAppOrdersStreamArn"
+      "Default": "storagefoodAppOrdersDBStreamArn"
     }
   },
   "Conditions": {
@@ -82,14 +82,14 @@
             "REGION": {
               "Ref": "AWS::Region"
             },
-            "STORAGE_FOODAPPORDERS_NAME": {
-              "Ref": "storagefoodAppOrdersName"
+            "STORAGE_FOODAPPORDERSDB_NAME": {
+              "Ref": "storagefoodAppOrdersDBName"
             },
-            "STORAGE_FOODAPPORDERS_ARN": {
-              "Ref": "storagefoodAppOrdersArn"
+            "STORAGE_FOODAPPORDERSDB_ARN": {
+              "Ref": "storagefoodAppOrdersDBArn"
             },
-            "STORAGE_FOODAPPORDERS_STREAMARN": {
-              "Ref": "storagefoodAppOrdersStreamArn"
+            "STORAGE_FOODAPPORDERSDB_STREAMARN": {
+              "Ref": "storagefoodAppOrdersDBStreamArn"
             }
           }
         },
@@ -110,12 +110,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "foodappLambdaRole03d551cc",
+            "foodappLambdaRole92cd2403",
             {
               "Fn::Join": [
                 "",
                 [
-                  "foodappLambdaRole03d551cc",
+                  "foodappLambdaRole92cd2403",
                   "-",
                   {
                     "Ref": "env"
@@ -204,29 +204,29 @@
             {
               "Effect": "Allow",
               "Action": [
-                "dynamodb:Put*",
-                "dynamodb:Create*",
-                "dynamodb:BatchWriteItem",
                 "dynamodb:Get*",
                 "dynamodb:BatchGetItem",
                 "dynamodb:List*",
                 "dynamodb:Describe*",
                 "dynamodb:Scan",
                 "dynamodb:Query",
+                "dynamodb:PartiQLSelect",
                 "dynamodb:Update*",
                 "dynamodb:RestoreTable*",
-                "dynamodb:Delete*"
+                "dynamodb:PartiQLUpdate",
+                "dynamodb:Delete*",
+                "dynamodb:PartiQLDelete"
               ],
               "Resource": [
                 {
-                  "Ref": "storagefoodAppOrdersArn"
+                  "Ref": "storagefoodAppOrdersDBArn"
                 },
                 {
                   "Fn::Join": [
                     "/",
                     [
                       {
-                        "Ref": "storagefoodAppOrdersArn"
+                        "Ref": "storagefoodAppOrdersDBArn"
                       },
                       "index/*"
                     ]
