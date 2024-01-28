@@ -8,22 +8,6 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "foodAppAdminOrders"
-        },
-        {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "function",
-          "resourceName": "foodAppAdminProd"
-        },
-        {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "function",
           "resourceName": "foodAppclientProd"
         },
         {
@@ -33,6 +17,22 @@
           ],
           "category": "function",
           "resourceName": "foodAppClientOrders"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "foodAppAdminOrders"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "foodAppAdminProd"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -129,72 +129,6 @@
       ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
-    }
-  },
-  "parameters": {
-    "AMPLIFY_function_foodAppAdminOrders_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "foodAppAdminOrders"
-        }
-      ]
-    },
-    "AMPLIFY_function_foodAppAdminOrders_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "foodAppAdminOrders"
-        }
-      ]
-    },
-    "AMPLIFY_function_foodAppAdminProd_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "foodAppAdminProd"
-        }
-      ]
-    },
-    "AMPLIFY_function_foodAppAdminProd_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "foodAppAdminProd"
-        }
-      ]
-    },
-    "AMPLIFY_function_foodAppClientOrders_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "foodAppClientOrders"
-        }
-      ]
-    },
-    "AMPLIFY_function_foodAppClientOrders_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "foodAppClientOrders"
-        }
-      ]
-    },
-    "AMPLIFY_function_foodAppclientProd_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "foodAppclientProd"
-        }
-      ]
-    },
-    "AMPLIFY_function_foodAppclientProd_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "foodAppclientProd"
-        }
-      ]
     }
   },
   "storage": {
